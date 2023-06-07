@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using shop.Domain.Entities;
+using shop.Domain.Entities.Products;
 
 namespace shop.Infraestructure.Context
 {
-    public class shopContext : Dbcontext
+    public class shopContext : DbContext
     {
         public shopContext() { }
-        public shopContext(
-            Dbcontext options <shopContext> options : options
-            )
-        { }
 
+        public shopContext(DbContextOptions<shopContext> options) : base(options)
+        { 
+        }
+        public DbSet<Product> Products { get; set; }
     }
 }
