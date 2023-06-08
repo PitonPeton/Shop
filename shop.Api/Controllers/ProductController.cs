@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using shop.Infraestructure.Interfaces;
+using shop.Domain.Entities;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,7 +21,7 @@ namespace shop.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var products = this.productRepository.GetEntities();
+            var products = this.productRepository.GetProducts();
             return Ok(products);
         }
 

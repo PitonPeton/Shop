@@ -19,10 +19,6 @@ builder.Services.AddDbContext<shopContext>(options => options.UseSqlServer(build
 
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
-// registros de app services //
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

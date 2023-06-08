@@ -7,6 +7,7 @@ using shop.Infraestructure.Context;
 using shop.Infraestructure.Core;
 using shop.Infraestructure.Exceptions;
 using shop.Infraestructure.Interfaces;
+using shop.Infraestructure.Models;
 
 namespace shop.Infraestructure.Repositories
 {
@@ -16,12 +17,12 @@ namespace shop.Infraestructure.Repositories
         private shopContext context;
 
         public ProductRepository(ILogger<ProductRepository> logger,
-                                shopContext context) : base(context) 
+                                shopContext context) : base(context)
         {
             this.logger = logger;
             this.context = context;
         }
-        
+
         public override void Add(Product entity)
         {
 
@@ -32,5 +33,30 @@ namespace shop.Infraestructure.Repositories
 
             base.SaveChanges();
         }
+
+        public List<ProductModel> GetProducts()
+        {
+
+            List<ProductModel> products = new List<ProductModel>();
+
+            try
+            {
+                products = this.context.Products.Select(de => new ProductModel()
+                {
+                    productid = de.productid,
+                    productname = de.productname,
+                    unitprice = de.unitprice,
+                    discontinued = de.discontinued
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogError("Error obteniendo productos", ex.ToString());
+            }
+
+            return products;
+        }
+
     }
 }
