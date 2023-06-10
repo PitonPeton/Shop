@@ -63,9 +63,6 @@ namespace shop.Infraestructure.Repositories
             catch (Exception ex)
             {
 
-
-                this.logger.LogError("Error obteniendo cliente", ex.ToString());
-
                 this.logger.LogError("Error obteniendo al cliente", ex.ToString());
 
             }
