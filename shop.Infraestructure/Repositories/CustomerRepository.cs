@@ -26,20 +26,20 @@ namespace shop.Infraestructure.Repositories
         public override void Add(Customer entity)
         {
 
-<<<<<<< HEAD
+
             if (this.Exists(cd => cd.companyname == entity.companyname))
             {
                 throw new CustomerException("");
             }
 
-=======
+
             if (this.Exists(cd => cd.contactname == entity.contactname))
             {
                 throw new CustomerException("El cliente ya existe");
             }
 
             base.Add(entity);
->>>>>>> Actualizacion
+
             base.SaveChanges();
         }
 
@@ -63,18 +63,15 @@ namespace shop.Infraestructure.Repositories
             catch (Exception ex)
             {
 
-<<<<<<< HEAD
+
                 this.logger.LogError("Error obteniendo cliente", ex.ToString());
-=======
+
                 this.logger.LogError("Error obteniendo al cliente", ex.ToString());
->>>>>>> Actualizacion
+
             }
 
             return customers;
         }
-
-<<<<<<< HEAD
-=======
         public CustomerModel GetCustomerId(int id)
         {
             CustomerModel customerModel = new CustomerModel();
@@ -139,6 +136,5 @@ namespace shop.Infraestructure.Repositories
             base.SaveChanges();
         }
 
->>>>>>> Actualizacion
     }
 }
