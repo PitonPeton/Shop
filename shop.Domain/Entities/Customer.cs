@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
+﻿
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace shop.Domain.Entities.Customer
 {
     [Table("Customers", Schema = "Sales")]
     public partial class Customer : Core.Person
     {
+        [Key]
         public int custid { get; set; }
         public string companyname { get; set; }
         public string contactname { get; set; }
