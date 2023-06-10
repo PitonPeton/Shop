@@ -19,9 +19,13 @@ namespace shop.Api.Controllers
         {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.customerService = customerService;
 =======
             this.customerService = customerService;  
+>>>>>>> Actualizacion
+=======
+            this.customerService = customerService;
 >>>>>>> Actualizacion
 =======
             this.customerService = customerService;

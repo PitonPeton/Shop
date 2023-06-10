@@ -31,9 +31,13 @@ namespace shop.Application.Service
             {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Data = this.customerRepository.GetCustomer();
 =======
                 result.Data = this.customerRepository.GetCustomers();
+>>>>>>> Actualizacion
+=======
+                result.Data = this.customerRepository.GetCustomer();
 >>>>>>> Actualizacion
 =======
                 result.Data = this.customerRepository.GetCustomer();
@@ -81,6 +85,9 @@ namespace shop.Application.Service
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion
             if (string.IsNullOrEmpty(model.contactname))
@@ -150,6 +157,7 @@ namespace shop.Application.Service
                 return result;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             result = model.IsValidCustomer();
 
@@ -161,6 +169,8 @@ namespace shop.Application.Service
 >>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion
+=======
+>>>>>>> Actualizacion
             try
             {
                 var customer = model.ConvertDtoAddToEntity();
@@ -168,11 +178,16 @@ namespace shop.Application.Service
                 this.customerRepository.Add(customer);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 
                 result.Message = "El cliente agregado correctamente.";
 =======
 
                 result.Message = "Cliente agregado correctamente.";
+>>>>>>> Actualizacion
+=======
+                
+                result.Message = "El cliente agregado correctamente.";
 >>>>>>> Actualizacion
 =======
                 
@@ -190,9 +205,13 @@ namespace shop.Application.Service
                 result.Success = false;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "Error guardando al cliente.";
 =======
                 result.Message = "Error guardando el cliente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "Error guardando al cliente.";
 >>>>>>> Actualizacion
 =======
                 result.Message = "Error guardando al cliente.";
@@ -207,6 +226,9 @@ namespace shop.Application.Service
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion
             if (string.IsNullOrEmpty(model.contactname))
@@ -276,6 +298,7 @@ namespace shop.Application.Service
                 return result;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             result = model.IsValidCustomer();
 
@@ -287,6 +310,8 @@ namespace shop.Application.Service
 >>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion
+=======
+>>>>>>> Actualizacion
             try
             {
                 var customer = model.ConvertDtoUpdateToEntity();
@@ -295,9 +320,13 @@ namespace shop.Application.Service
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "El cliente se ha modificado exitosamente.";
 =======
                 result.Message = "El cliente se ha modificado correctamente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "El cliente se ha modificado exitosamente.";
 >>>>>>> Actualizacion
 =======
                 result.Message = "El cliente se ha modificado exitosamente.";
@@ -314,9 +343,13 @@ namespace shop.Application.Service
                 result.Success = false;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "Error modificando al cliente.";
 =======
                 result.Message = "Error modificando el cliente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "Error modificando al cliente.";
 >>>>>>> Actualizacion
 =======
                 result.Message = "Error modificando al cliente.";
@@ -330,6 +363,9 @@ namespace shop.Application.Service
             ServiceResult result = new ServiceResult();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion
             
@@ -340,10 +376,13 @@ namespace shop.Application.Service
                 return result;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
             result = model.ValidUser();
             
+>>>>>>> Actualizacion
+=======
 >>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion
@@ -359,9 +398,13 @@ namespace shop.Application.Service
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "Cliente eliminado satisfactoriamente.";
 =======
                 result.Message = "Cliente se ha deleteado satisfactoriamente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "Cliente eliminado satisfactoriamente.";
 >>>>>>> Actualizacion
 =======
                 result.Message = "Cliente eliminado satisfactoriamente.";

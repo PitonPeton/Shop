@@ -1,8 +1,11 @@
 ﻿
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 using shop.Application.Core;
+>>>>>>> Actualizacion
+=======
 >>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion
@@ -14,6 +17,7 @@ namespace shop.Application.Extentions
 {
     public static class CustomerExtention
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -105,6 +109,8 @@ namespace shop.Application.Extentions
             return result;
         }
 
+>>>>>>> Actualizacion
+=======
 >>>>>>> Actualizacion
 =======
 >>>>>>> Actualizacion

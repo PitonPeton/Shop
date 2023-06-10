@@ -12,9 +12,13 @@ namespace shop.Infraestructure.Exceptions
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         public class CustomerDataException : Exception
 =======
     public class CustomerDataException : Exception
+>>>>>>> Actualizacion
+=======
+        public class CustomerDataException : Exception
 >>>>>>> Actualizacion
 =======
         public class CustomerDataException : Exception
@@ -28,8 +32,12 @@ namespace shop.Infraestructure.Exceptions
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
+>>>>>>> Actualizacion
+=======
+    
 >>>>>>> Actualizacion
 =======
     

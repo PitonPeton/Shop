@@ -14,9 +14,13 @@
   <ItemGroup>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ProjectReference Include="..\shop.Domain\shop.Domain.csproj" />
 =======
     
+>>>>>>> Actualizacion
+=======
+    <ProjectReference Include="..\shop.Domain\shop.Domain.csproj" />
 >>>>>>> Actualizacion
 =======
     <ProjectReference Include="..\shop.Domain\shop.Domain.csproj" />
