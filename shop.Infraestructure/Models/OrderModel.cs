@@ -4,7 +4,7 @@ using System.Text;
 
 namespace shop.Infraestructure.Models
 {
-    internal class OrderModel
+    public class OrderModel
     {
         public int Id { get; set; }
         public string? shipname { get; set; }

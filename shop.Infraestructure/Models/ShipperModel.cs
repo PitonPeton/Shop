@@ -4,7 +4,7 @@ using System.Text;
 
 namespace shop.Infraestructure.Models
 {
-    internal class ShipperModel
+    public class ShipperModel
     {
         public int shipperid { get; set; }
         public string? companyname { get; set; }
