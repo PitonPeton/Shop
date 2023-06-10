@@ -6,7 +6,9 @@ namespace shop.Infraestructure.Context
 {
     public class shopContext : DbContext
     {
-        public shopContext() { }
+        public shopContext() 
+        {
+        }
 
         public shopContext(DbContextOptions<shopContext> options) : base(options)
         { 

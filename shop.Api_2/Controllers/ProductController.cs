@@ -27,10 +27,10 @@ namespace shop.Api.Controllers
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public string Get(int id)
         {
-            var product = this.productRepository.GetEntity(id);
-            return Ok(product);
+            var product = productRepository.GetEntity(id).ToString()??"";
+            return product;
         }
 
         // POST api/<ProductController>

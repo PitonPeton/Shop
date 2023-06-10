@@ -23,17 +23,6 @@ namespace shop.Infraestructure.Repositories
             this.context = context;
         }
 
-        public override void Add(Product entity)
-        {
-
-            if (this.Exists(cd => cd.productname == entity.productname))
-            {
-                throw new ProductException("");
-            }
-
-            base.SaveChanges();
-        }
-
         public List<ProductModel> GetProducts()
         {
 
@@ -58,5 +47,32 @@ namespace shop.Infraestructure.Repositories
             return products;
         }
 
+        public override void Add(Product entity)
+        {
+
+            if (this.Exists(cd => cd.productname == entity.productname))
+            {
+                throw new ProductException("");
+            }
+
+            base.SaveChanges();
+        }
+
+        public override void Delete(Product entity)
+        {
+            if (this.Exists(cd => cd.productname == entity.productname))
+            {
+                throw new ProductException("");
+            }
+
+            base.SaveChanges();
+        }
+
+        public override void Update(Product entity)
+        {
+            base.Update(entity);
+        }
+        
+        
     }
 }
