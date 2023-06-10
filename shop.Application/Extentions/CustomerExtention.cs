@@ -1,7 +1,10 @@
 ﻿
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 using shop.Application.Core;
+>>>>>>> Actualizacion
+=======
 >>>>>>> Actualizacion
 using shop.Application.Dtos.Customer;
 using shop.Domain.Entities.Customer;
@@ -11,6 +14,7 @@ namespace shop.Application.Extentions
 {
     public static class CustomerExtention
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         public static ServiceResult ValidUser(this CustomerDeleteDto model)
@@ -101,6 +105,8 @@ namespace shop.Application.Extentions
             return result;
         }
 
+>>>>>>> Actualizacion
+=======
 >>>>>>> Actualizacion
         public static Customer ConvertDtoAddToEntity(this CustomerAddDto customerAddDto)
         {

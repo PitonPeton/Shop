@@ -30,9 +30,13 @@ namespace shop.Application.Service
             try
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Data = this.customerRepository.GetCustomer();
 =======
                 result.Data = this.customerRepository.GetCustomers();
+>>>>>>> Actualizacion
+=======
+                result.Data = this.customerRepository.GetCustomer();
 >>>>>>> Actualizacion
             }
             catch (CustomerException pex)
@@ -76,6 +80,9 @@ namespace shop.Application.Service
             ServiceResult result = new ServiceResult();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
             if (string.IsNullOrEmpty(model.contactname))
             {
                 result.Message = "El nombre del cliente es necesario.";
@@ -142,6 +149,7 @@ namespace shop.Application.Service
                 result.Success = false;
                 return result;
             }
+<<<<<<< HEAD
 =======
             result = model.IsValidCustomer();
 
@@ -151,17 +159,24 @@ namespace shop.Application.Service
             }
 
 >>>>>>> Actualizacion
+=======
+>>>>>>> Actualizacion
             try
             {
                 var customer = model.ConvertDtoAddToEntity();
 
                 this.customerRepository.Add(customer);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 
                 result.Message = "El cliente agregado correctamente.";
 =======
 
                 result.Message = "Cliente agregado correctamente.";
+>>>>>>> Actualizacion
+=======
+                
+                result.Message = "El cliente agregado correctamente.";
 >>>>>>> Actualizacion
             }
             catch (CustomerDataException pex)
@@ -174,9 +189,13 @@ namespace shop.Application.Service
             {
                 result.Success = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "Error guardando al cliente.";
 =======
                 result.Message = "Error guardando el cliente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "Error guardando al cliente.";
 >>>>>>> Actualizacion
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
@@ -187,6 +206,9 @@ namespace shop.Application.Service
             ServiceResult result = new ServiceResult();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
             if (string.IsNullOrEmpty(model.contactname))
             {
                 result.Message = "El nombre del cliente es necesario.";
@@ -253,6 +275,7 @@ namespace shop.Application.Service
                 result.Success = false;
                 return result;
             }
+<<<<<<< HEAD
 =======
             result = model.IsValidCustomer();
 
@@ -262,6 +285,8 @@ namespace shop.Application.Service
             }
 
 >>>>>>> Actualizacion
+=======
+>>>>>>> Actualizacion
             try
             {
                 var customer = model.ConvertDtoUpdateToEntity();
@@ -269,9 +294,13 @@ namespace shop.Application.Service
                 this.customerRepository.Update(customer);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "El cliente se ha modificado exitosamente.";
 =======
                 result.Message = "El cliente se ha modificado correctamente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "El cliente se ha modificado exitosamente.";
 >>>>>>> Actualizacion
             }
             catch (CustomerDataException dex)
@@ -284,9 +313,13 @@ namespace shop.Application.Service
             {
                 result.Success = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "Error modificando al cliente.";
 =======
                 result.Message = "Error modificando el cliente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "Error modificando al cliente.";
 >>>>>>> Actualizacion
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
@@ -296,6 +329,9 @@ namespace shop.Application.Service
         {
             ServiceResult result = new ServiceResult();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
             
             if (!model.change_user.HasValue)
             {
@@ -303,10 +339,13 @@ namespace shop.Application.Service
                 result.Success = false;
                 return result;
             }
+<<<<<<< HEAD
 =======
 
             result = model.ValidUser();
             
+>>>>>>> Actualizacion
+=======
 >>>>>>> Actualizacion
             try
             {
@@ -319,9 +358,13 @@ namespace shop.Application.Service
                 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 result.Message = "Cliente eliminado satisfactoriamente.";
 =======
                 result.Message = "Cliente se ha deleteado satisfactoriamente.";
+>>>>>>> Actualizacion
+=======
+                result.Message = "Cliente eliminado satisfactoriamente.";
 >>>>>>> Actualizacion
             }
             catch (CustomerDataException pex)

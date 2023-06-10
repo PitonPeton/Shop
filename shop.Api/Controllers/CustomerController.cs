@@ -18,9 +18,13 @@ namespace shop.Api.Controllers
         public CustomerController(ICustomerService customerService)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.customerService = customerService;
 =======
             this.customerService = customerService;  
+>>>>>>> Actualizacion
+=======
+            this.customerService = customerService;
 >>>>>>> Actualizacion
         }
 

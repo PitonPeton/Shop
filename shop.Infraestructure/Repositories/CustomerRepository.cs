@@ -97,6 +97,9 @@ namespace shop.Infraestructure.Repositories
                 customerModel.email = customer.email;
                 customerModel.fax = customer.fax;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
                 customerModel.phone = customer.phone;
                 customerModel.address = customer.address;
                 customerModel.city = customer.city;
@@ -164,10 +167,14 @@ namespace shop.Infraestructure.Repositories
                 customerToUpdate.email = entity.email;
                 customerToUpdate.fax = entity.fax;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Actualizacion
                 customerToUpdate.phone = entity.phone;
                 customerToUpdate.address = entity.address;
                 customerToUpdate.city = entity.city;
                 customerToUpdate.country = entity.country;
+<<<<<<< HEAD
 =======
                 customerToUpdate.address = entity.address;
                 customerToUpdate.city = entity.city;
@@ -175,6 +182,8 @@ namespace shop.Infraestructure.Repositories
                 customerToUpdate.postalcode = entity.postalcode;
                 customerToUpdate.country = entity.country;
                 customerToUpdate.phone = entity.phone;
+>>>>>>> Actualizacion
+=======
 >>>>>>> Actualizacion
                 customerToUpdate.modify_date = entity.modify_date;
                 customerToUpdate.modify_user = entity.modify_user;
@@ -202,9 +211,13 @@ namespace shop.Infraestructure.Repositories
                 if (customerToDelete == null)
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     throw new CustomerDataException("El producto no existe.");
 =======
                     throw new CustomerDataException("El cliente no existe.");
+>>>>>>> Actualizacion
+=======
+                    throw new CustomerDataException("El producto no existe.");
 >>>>>>> Actualizacion
                 }
 
