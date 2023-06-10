@@ -29,7 +29,11 @@ namespace shop.Application.Service
             ServiceResult result = new ServiceResult();
             try
             {
+<<<<<<< HEAD
                 result.Data = this.customerRepository.GetCustomer();
+=======
+                result.Data = this.customerRepository.GetCustomers();
+>>>>>>> Actualizacion
             }
             catch (CustomerException pex)
             {
@@ -71,6 +75,7 @@ namespace shop.Application.Service
         {
             ServiceResult result = new ServiceResult();
 
+<<<<<<< HEAD
             if (string.IsNullOrEmpty(model.contactname))
             {
                 result.Message = "El nombre del cliente es necesario.";
@@ -137,13 +142,27 @@ namespace shop.Application.Service
                 result.Success = false;
                 return result;
             }
+=======
+            result = model.IsValidCustomer();
+
+            if (!result.Success)
+            {
+                return result;
+            }
+
+>>>>>>> Actualizacion
             try
             {
                 var customer = model.ConvertDtoAddToEntity();
 
                 this.customerRepository.Add(customer);
+<<<<<<< HEAD
                 
                 result.Message = "El cliente agregado correctamente.";
+=======
+
+                result.Message = "Cliente agregado correctamente.";
+>>>>>>> Actualizacion
             }
             catch (CustomerDataException pex)
             {
@@ -154,7 +173,11 @@ namespace shop.Application.Service
             catch (Exception ex)
             {
                 result.Success = false;
+<<<<<<< HEAD
                 result.Message = "Error guardando al cliente.";
+=======
+                result.Message = "Error guardando el cliente.";
+>>>>>>> Actualizacion
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
             return result;
@@ -163,6 +186,7 @@ namespace shop.Application.Service
         {
             ServiceResult result = new ServiceResult();
 
+<<<<<<< HEAD
             if (string.IsNullOrEmpty(model.contactname))
             {
                 result.Message = "El nombre del cliente es necesario.";
@@ -229,13 +253,26 @@ namespace shop.Application.Service
                 result.Success = false;
                 return result;
             }
+=======
+            result = model.IsValidCustomer();
+
+            if (!result.Success)
+            {
+                return result;
+            }
+
+>>>>>>> Actualizacion
             try
             {
                 var customer = model.ConvertDtoUpdateToEntity();
 
                 this.customerRepository.Update(customer);
 
+<<<<<<< HEAD
                 result.Message = "El cliente se ha modificado exitosamente.";
+=======
+                result.Message = "El cliente se ha modificado correctamente.";
+>>>>>>> Actualizacion
             }
             catch (CustomerDataException dex)
             {
@@ -246,7 +283,11 @@ namespace shop.Application.Service
             catch (Exception ex)
             {
                 result.Success = false;
+<<<<<<< HEAD
                 result.Message = "Error modificando al cliente.";
+=======
+                result.Message = "Error modificando el cliente.";
+>>>>>>> Actualizacion
                 this.logger.LogError($"{result.Message}", ex.ToString());
             }
             return result;
@@ -254,6 +295,7 @@ namespace shop.Application.Service
         public ServiceResult Delete(CustomerDeleteDto model)
         {
             ServiceResult result = new ServiceResult();
+<<<<<<< HEAD
             
             if (!model.change_user.HasValue)
             {
@@ -261,6 +303,11 @@ namespace shop.Application.Service
                 result.Success = false;
                 return result;
             }
+=======
+
+            result = model.ValidUser();
+            
+>>>>>>> Actualizacion
             try
             {
                 this.customerRepository.Delete(new Customer()
@@ -271,7 +318,11 @@ namespace shop.Application.Service
                     delete_user = model.change_user.Value,
                 });
 
+<<<<<<< HEAD
                 result.Message = "Cliente eliminado satisfactoriamente.";
+=======
+                result.Message = "Cliente se ha deleteado satisfactoriamente.";
+>>>>>>> Actualizacion
             }
             catch (CustomerDataException pex)
             {

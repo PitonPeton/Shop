@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace shop.Infraestructure.Exceptions
 {
@@ -12,7 +10,11 @@ namespace shop.Infraestructure.Exceptions
         }
 
     }
+<<<<<<< HEAD
         public class CustomerDataException : Exception
+=======
+    public class CustomerDataException : Exception
+>>>>>>> Actualizacion
         {
             public CustomerDataException(string message) : base(message)
             {
@@ -20,5 +22,8 @@ namespace shop.Infraestructure.Exceptions
             }
 
         }
+<<<<<<< HEAD
     
+=======
+>>>>>>> Actualizacion
 }

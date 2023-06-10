@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace shop.Application.Dtos.Customer
 {
     public class CustomerDeleteDto : DtoBase

@@ -17,7 +17,11 @@ namespace shop.Api.Controllers
 
         public CustomerController(ICustomerService customerService)
         {
+<<<<<<< HEAD
             this.customerService = customerService;
+=======
+            this.customerService = customerService;  
+>>>>>>> Actualizacion
         }
 
         [HttpGet]

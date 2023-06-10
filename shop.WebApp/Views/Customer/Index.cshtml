@@ -1,0 +1,95 @@
+﻿@model IEnumerable<shop.WebApp.Models.CustomerModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Customers</h1>
+
+<p>
+	<a asp-action="Create">Crear nuevo cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Contact Name
+            </th>
+            <th>
+                Contact Title
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Fax
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Region
+            </th>
+            <th>
+                Postal Code
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.companyname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contactname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contacttitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.postalcode)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id= item.custid }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.custid })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

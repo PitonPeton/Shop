@@ -1,5 +1,6 @@
 ﻿﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using shop.Domain.Entities.Customer;
@@ -24,6 +25,7 @@ namespace shop.Infraestructure.Repositories
             this.context = context;
         }
 
+<<<<<<< HEAD
         public override void Add(Customer entity)
         {
 
@@ -39,6 +41,9 @@ namespace shop.Infraestructure.Repositories
         }
 
         public List<CustomerModel> GetCustomer()
+=======
+        public List<CustomerModel> GetCustomers()
+>>>>>>> Actualizacion
         {
 
             List<CustomerModel> customers = new List<CustomerModel>();
@@ -70,6 +75,7 @@ namespace shop.Infraestructure.Repositories
 
             return customers;
         }
+
         public CustomerModel GetCustomerId(int id)
         {
             CustomerModel customerModel = new CustomerModel();
@@ -90,6 +96,7 @@ namespace shop.Infraestructure.Repositories
                 customerModel.contacttitle = customer.contacttitle;
                 customerModel.email = customer.email;
                 customerModel.fax = customer.fax;
+<<<<<<< HEAD
                 customerModel.phone = customer.phone;
                 customerModel.address = customer.address;
                 customerModel.city = customer.city;
@@ -102,11 +109,41 @@ namespace shop.Infraestructure.Repositories
             }
 
             catch (Exception ex)
-            {
+=======
+                customerModel.address = customer.address;
+                customerModel.city = customer.city;
+                customerModel.region = customer.region;
+                customerModel.postalcode = customer.postalcode;
+                customerModel.country = customer.country;
+                customerModel.phone = customer.phone;
+            }
 
-                this.logger.LogError("Error obteniendo al cliente", ex.ToString());
+            catch (CustomerDataException dex)
+>>>>>>> Actualizacion
+            {
+                throw new CustomerDataException(dex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                string error = "Error obteniendo el cliente";
+                this.logger.LogError(error, ex.ToString());
             }
             return customerModel;
+        }
+
+        public override void Add(Customer entity)
+        {
+
+
+            if (this.Exists(cd => cd.contactname == entity.contactname))
+            {
+                throw new CustomerException("El cliente ya existe");
+            }
+
+            base.Add(entity);
+
+            base.SaveChanges();
         }
 
         public override void Update(Customer entity)
@@ -126,10 +163,19 @@ namespace shop.Infraestructure.Repositories
                 customerToUpdate.contacttitle = entity.contacttitle;
                 customerToUpdate.email = entity.email;
                 customerToUpdate.fax = entity.fax;
+<<<<<<< HEAD
                 customerToUpdate.phone = entity.phone;
                 customerToUpdate.address = entity.address;
                 customerToUpdate.city = entity.city;
                 customerToUpdate.country = entity.country;
+=======
+                customerToUpdate.address = entity.address;
+                customerToUpdate.city = entity.city;
+                customerToUpdate.region = entity.region;
+                customerToUpdate.postalcode = entity.postalcode;
+                customerToUpdate.country = entity.country;
+                customerToUpdate.phone = entity.phone;
+>>>>>>> Actualizacion
                 customerToUpdate.modify_date = entity.modify_date;
                 customerToUpdate.modify_user = entity.modify_user;
 
@@ -155,7 +201,11 @@ namespace shop.Infraestructure.Repositories
 
                 if (customerToDelete == null)
                 {
+<<<<<<< HEAD
                     throw new CustomerDataException("El producto no existe.");
+=======
+                    throw new CustomerDataException("El cliente no existe.");
+>>>>>>> Actualizacion
                 }
 
                 

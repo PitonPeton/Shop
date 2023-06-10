@@ -18,6 +18,21 @@ namespace shop.Infraestructure.Core
             this.shop = shop;
             this.entities = this.shop.Set<TEntity>();
         }
+
+        public virtual bool Exists(Expression<Func<TEntity, bool>> filter)
+        {
+            return this.entities.Any(filter);
+        }
+
+        public virtual List<TEntity> GetEntities()
+        {
+            return this.entities.ToList();
+        }
+        public virtual TEntity GetEntity(int id)
+        {
+            return this.entities.Find(id);
+        }
+
         public virtual void Add(TEntity entity)
         {
             this.entities.Add(entity);
@@ -38,26 +53,6 @@ namespace shop.Infraestructure.Core
             this.entities.RemoveRange(entities);
         }
 
-        public virtual bool Exists(Expression<Func<TEntity, bool>> filter)
-        {
-            return this.entities.Any(filter);
-        }
-
-        public virtual List<TEntity> GetEntities()
-        {
-            return this.entities.ToList();
-        }
-
-        public virtual TEntity GetEntity(int id)
-        {
-            return this.entities.Find(id);
-        }
-
-        public virtual void SaveChanges()
-        {
-            this.shop.SaveChanges();
-        }
-
         public virtual void Update(TEntity entity)
         {
             this.entities.Update(entity);
@@ -66,6 +61,10 @@ namespace shop.Infraestructure.Core
         public virtual void Update(TEntity[] entities)
         {
             this.entities.UpdateRange(entities);
+        }
+        public virtual void SaveChanges()
+        {
+            this.shop.SaveChanges();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using shop.Domain.Entities;
 using shop.Domain.Entities.Customer;
-using System;
+
 
 namespace shop.Infraestructure.Context
 {

@@ -1,4 +1,8 @@
 ﻿
+<<<<<<< HEAD
+=======
+using shop.Application.Core;
+>>>>>>> Actualizacion
 using shop.Application.Dtos.Customer;
 using shop.Domain.Entities.Customer;
 using System;
@@ -7,6 +11,97 @@ namespace shop.Application.Extentions
 {
     public static class CustomerExtention
     {
+<<<<<<< HEAD
+=======
+        public static ServiceResult ValidUser(this CustomerDeleteDto model)
+        {
+            ServiceResult result = new ServiceResult();
+
+            if (!model.change_user.HasValue)
+            {
+                result.Message = "Se requiere un usuario.";
+                result.Success = false;
+                return result;
+            }
+
+            return result;
+        }
+
+        public static ServiceResult IsValidCustomer(this CustomerDto model)
+        {
+            ServiceResult result = new ServiceResult();
+
+            if (string.IsNullOrEmpty(model.contactname))
+            {
+                result.Message = "El nombre del cliente es necesario.";
+                result.Success = false;
+                return result;
+            }
+            if (model.contactname.Length > 40)
+            {
+                result.Message = "El nombre del cliente tiene una longitud invalida.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.companyname))
+            {
+                result.Message = "El nombre de la compañia es necesario.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.contacttitle))
+            {
+                result.Message = "El titulo del contacto es necesario.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.address))
+            {
+                result.Message = "La direccion del cliente es necesaria.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.email))
+            {
+                result.Message = "El email del cliente es necesario.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.city))
+            {
+                result.Message = "La ciudad del cliente es necesaria.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.country))
+            {
+                result.Message = "El pais del cliente es necesario.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.phone))
+            {
+                result.Message = "El telefono del cliente es necesario.";
+                result.Success = false;
+                return result;
+            }
+            if (string.IsNullOrEmpty(model.fax))
+            {
+                result.Message = "El fax del cliente es necesario.";
+                result.Success = false;
+                return result;
+            }
+            if (!model.change_user.HasValue)
+            {
+                result.Message = "Se requiere un usuario.";
+                result.Success = false;
+                return result;
+            }
+
+            return result;
+        }
+
+>>>>>>> Actualizacion
         public static Customer ConvertDtoAddToEntity(this CustomerAddDto customerAddDto)
         {
             return new Customer()
