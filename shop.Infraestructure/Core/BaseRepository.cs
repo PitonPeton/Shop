@@ -13,8 +13,8 @@ namespace shop.Infraestructure.Core
     {
         private readonly shopContext shop;
         private readonly DbSet<TEntity> entities;
-        public BaseRepository(shopContext shop) 
-        { 
+        public BaseRepository(shopContext shop)
+        {
             this.shop = shop;
             this.entities = this.shop.Set<TEntity>();
         }

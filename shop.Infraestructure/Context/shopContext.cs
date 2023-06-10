@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using shop.Domain.Entities;
 using shop.Domain.Entities.Customer;
+using System;
 
 namespace shop.Infraestructure.Context
 {
@@ -11,6 +12,6 @@ namespace shop.Infraestructure.Context
         public shopContext(DbContextOptions<shopContext> options) : base(options)
         { 
         }
-        public DbSet<Product> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }
