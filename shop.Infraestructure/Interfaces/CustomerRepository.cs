@@ -10,5 +10,6 @@ namespace shop.Infraestructure.Interfaces
     public interface ICustomerRepository : IBaseRepository<Customer>
     {
         List<CustomerModel> GetCustomer();
+        CustomerModel GetCustomerId(int id);
     }
 }

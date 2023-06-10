@@ -8,6 +8,7 @@ using shop.Infraestructure.Core;
 using shop.Infraestructure.Exceptions;
 using shop.Infraestructure.Interfaces;
 using shop.Infraestructure.Models;
+using static shop.Infraestructure.Exceptions.CustomerException;
 
 namespace shop.Infraestructure.Repositories
 {
@@ -25,12 +26,6 @@ namespace shop.Infraestructure.Repositories
 
         public override void Add(Customer entity)
         {
-
-
-            if (this.Exists(cd => cd.companyname == entity.companyname))
-            {
-                throw new CustomerException("");
-            }
 
 
             if (this.Exists(cd => cd.contactname == entity.contactname))
@@ -56,14 +51,20 @@ namespace shop.Infraestructure.Repositories
                     companyname = de.companyname,
                     contactname = de.contactname,
                     contacttitle = de.contacttitle,
+                    address = de.address,
                     email = de.email,
+                    city = de.city,
+                    region = de.region,
+                    postalcode = de.postalcode,
+                    country = de.country,
+                    phone = de.phone,
                     fax = de.fax
                 }).ToList();
             }
             catch (Exception ex)
             {
 
-                this.logger.LogError("Error obteniendo al cliente", ex.ToString());
+                this.logger.LogError("Error obteniendo a los clientes", ex.ToString());
 
             }
 
@@ -75,7 +76,13 @@ namespace shop.Infraestructure.Repositories
 
             try
             {
+
                 Customer customer = this.GetEntity(id);
+
+                if (customer == null)
+                {
+                    throw new CustomerDataException("El cliente no existe.");
+                }
 
                 customerModel.custid = customer.custid;
                 customerModel.companyname = customer.companyname;
@@ -83,7 +90,17 @@ namespace shop.Infraestructure.Repositories
                 customerModel.contacttitle = customer.contacttitle;
                 customerModel.email = customer.email;
                 customerModel.fax = customer.fax;
+                customerModel.phone = customer.phone;
+                customerModel.address = customer.address;
+                customerModel.city = customer.city;
+                customerModel.country = customer.country;
             }
+
+            catch (CustomerDataException dex)
+            {
+                throw new CustomerDataException(dex.Message);
+            }
+
             catch (Exception ex)
             {
 
@@ -97,15 +114,31 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Customer customerToUpdate = this.GetEntity(entity.custid);
+
+                if (customerToUpdate == null)
+                {
+                    throw new CustomerDataException("El cliente no existe.");
+                }
+
                 customerToUpdate.custid = entity.custid;
                 customerToUpdate.companyname = entity.companyname;
                 customerToUpdate.contactname = entity.contactname;
                 customerToUpdate.contacttitle = entity.contacttitle;
+                customerToUpdate.email = entity.email;
+                customerToUpdate.fax = entity.fax;
+                customerToUpdate.phone = entity.phone;
+                customerToUpdate.address = entity.address;
+                customerToUpdate.city = entity.city;
+                customerToUpdate.country = entity.country;
                 customerToUpdate.modify_date = entity.modify_date;
                 customerToUpdate.modify_user = entity.modify_user;
 
                 this.context.Customers.Update(customerToUpdate);
                 this.context.SaveChanges();
+            }
+            catch (CustomerDataException dex)
+            {
+                throw new CustomerDataException(dex.Message);
             }
             catch (Exception ex)
             {
@@ -117,7 +150,15 @@ namespace shop.Infraestructure.Repositories
         {
             try
             {
+
                 Customer customerToDelete = this.GetEntity(entity.custid);
+
+                if (customerToDelete == null)
+                {
+                    throw new CustomerDataException("El producto no existe.");
+                }
+
+                
                 customerToDelete.deleted = entity.deleted;
                 customerToDelete.delete_date = DateTime.Now;
                 customerToDelete.delete_user = entity.delete_user;
@@ -125,6 +166,11 @@ namespace shop.Infraestructure.Repositories
                 this.context.Customers.Update(customerToDelete);
                 this.context.SaveChanges();
             }
+            catch (CustomerDataException dex)
+            {
+                throw new CustomerDataException(dex.Message);
+            }
+
             catch (Exception ex)
             {
 
