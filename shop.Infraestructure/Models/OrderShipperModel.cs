@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace shop.Infraestructure.Models
 {
@@ -9,9 +7,10 @@ namespace shop.Infraestructure.Models
         public OrderShipperModel(OrderModel orderModel)
         {
             this.OrderModel = new OrderModel();
-            OrderModel = orderModel;
+            this.ShipperModels = new List<ShipperModel>();
         }
 
-        public OrderModel OrderModel { get; }
+        public OrderModel? OrderModel { get; set; }
+        public List<ShipperModel> ShipperModels { get; set; }
     }
 }

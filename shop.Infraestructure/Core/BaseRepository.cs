@@ -17,54 +17,55 @@ namespace shop.Infraestructure.Core
             this.shop = shop;
             this.entities = this.shop.Set<TEntity>();
         }
-        public void Add(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Add(TEntity[] entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(TEntity[] entities)
-        {
-            throw new NotImplementedException();
-        }
-
         public virtual bool Exists(Expression<Func<TEntity, bool>> filter)
         {
             return this.entities.Any(filter);
         }
 
-        public List<TEntity> GetEntities()
+        public virtual List<TEntity> GetEntities()
         {
-            throw new NotImplementedException();
+            return this.entities.ToList();
         }
 
-        public TEntity GetEntity(int id)
+        public virtual TEntity GetEntity(int id)
         {
-            throw new NotImplementedException();
+            return this.entities.Find(id);
         }
 
-        public void SaveChanges()
+        public virtual void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            this.entities.Add(entity);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Add(TEntity[] entities)
         {
-            throw new NotImplementedException();
+            this.entities.AddRange(entities);
         }
 
-        public void Update(TEntity[] entities)
+        public virtual void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            // Recordatorio: Modificar los datos de auditorio.
+
+            this.entities.Remove(entity);
+        }
+
+        public virtual void Delete(TEntity[] entities)
+        {
+            this.entities.RemoveRange(entities);
+        }
+
+        public virtual void Update(TEntity entity)
+        {
+            this.entities.Update(entity);
+        }
+
+        public virtual void Update(TEntity[] entities)
+        {
+            this.entities.UpdateRange(entities);
+        }
+        public virtual void SaveChanges()
+        {
+            this.shop.SaveChanges();
         }
     }
 }
