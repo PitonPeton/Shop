@@ -39,7 +39,9 @@ namespace shop.Api.Controllers
             {
                 productname = productAdd.productname,
                 unitprice = productAdd.unitprice,
-                creation_date = productAdd.change_date,
+                categoryid = 1,
+                supplierid = 1,
+                creation_date = DateTime.Now,
                 creation_user = productAdd.change_user
             });
             return Ok();
@@ -54,6 +56,8 @@ namespace shop.Api.Controllers
                 productname = productUpdate.productname,
                 unitprice = productUpdate.unitprice,
                 discontinued = productUpdate.discontinued,
+                categoryid = productUpdate.categoryid,
+                supplierid = productUpdate.supplierid,
                 modify_date = DateTime.Now,
                 modify_user = productUpdate.change_user
             };
@@ -69,7 +73,7 @@ namespace shop.Api.Controllers
             {
                 productid = productDelete.productid,
                 deleted = productDelete.deleted,
-                delete_date = productDelete.change_date,
+                delete_date = DateTime.Now,
                 delete_user = productDelete.change_user,
             };
 

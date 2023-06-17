@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace shop.Application.Dtos.Product
+﻿namespace shop.Application.Dtos.Product
 {
     public class ProductDeleteDto : DtoBase
     {

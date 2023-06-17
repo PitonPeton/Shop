@@ -1,6 +1,4 @@
-﻿using System;
-
-// NO IMPLEMENTADO, NO USAR //
+﻿// NO IMPLEMENTADO, NO USAR //
 
 namespace shop.Application.Dtos.Product
 {

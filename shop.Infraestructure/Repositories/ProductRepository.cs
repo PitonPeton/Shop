@@ -35,8 +35,11 @@ namespace shop.Infraestructure.Repositories
                     productid = de.productid,
                     productname = de.productname,
                     unitprice = de.unitprice,
-                    discontinued = de.discontinued
-                }).ToList();
+                    discontinued = de.discontinued,
+                    categoryid = de.categoryid,
+                    supplierid = de.supplierid
+
+            }).ToList();
             }
             catch (Exception ex)
             {
@@ -59,6 +62,8 @@ namespace shop.Infraestructure.Repositories
                 productModel.productname = product.productname;
                 productModel.unitprice = product.unitprice;
                 productModel.discontinued = product.discontinued;
+                productModel.categoryid = product.categoryid;
+                productModel.supplierid = product.supplierid;
             }
             catch (Exception ex)
             {
@@ -87,6 +92,8 @@ namespace shop.Infraestructure.Repositories
                 productToUpdate.productname = entity.productname;
                 productToUpdate.unitprice = entity.unitprice;
                 productToUpdate.discontinued = entity.discontinued;
+                productToUpdate.categoryid = entity.categoryid;
+                productToUpdate.supplierid = entity.supplierid;
                 productToUpdate.modify_date = entity.modify_date;
                 productToUpdate.modify_user = entity.modify_user;
 
