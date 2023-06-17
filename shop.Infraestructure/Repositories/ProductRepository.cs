@@ -47,32 +47,75 @@ namespace shop.Infraestructure.Repositories
             return products;
         }
 
+        public ProductModel GetProductId(int id)
+        {
+            ProductModel productModel = new ProductModel();
+
+            try
+            {
+                Product product = this.GetEntity(id);
+
+                productModel.productid = product.productid;
+                productModel.productname = product.productname;
+                productModel.unitprice = product.unitprice;
+                productModel.discontinued = product.discontinued;
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogError("Error obteniendo producto", ex.ToString());
+            }
+            return productModel;
+        }
         public override void Add(Product entity)
         {
 
             if (this.Exists(cd => cd.productname == entity.productname))
             {
-                throw new ProductException("");
+                throw new ProductException("Producto Existe");
             }
 
+            base.Add(entity);
             base.SaveChanges();
         }
-
-        public override void Delete(Product entity)
-        {
-            if (this.Exists(cd => cd.productname == entity.productname))
-            {
-                throw new ProductException("");
-            }
-
-            base.SaveChanges();
-        }
-
         public override void Update(Product entity)
         {
-            base.Update(entity);
+            try
+            {
+                Product productToUpdate = this.GetEntity(entity.productid);
+                productToUpdate.productid = entity.productid;
+                productToUpdate.productname = entity.productname;
+                productToUpdate.unitprice = entity.unitprice;
+                productToUpdate.discontinued = entity.discontinued;
+                productToUpdate.modify_date = entity.modify_date;
+                productToUpdate.modify_user = entity.modify_user;
+
+                this.context.Products.Update(productToUpdate);
+                this.context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError("Error actualizando producto", ex.ToString());
+            }
         }
-        
-        
+        public override void Delete(Product entity)
+        {
+            try
+            {
+                Product productToDelete = this.GetEntity(entity.productid);
+                productToDelete.deleted = entity.deleted;
+                productToDelete.delete_date = entity.delete_date;
+                productToDelete.delete_user = entity.delete_user;
+
+                this.context.Products.Update(productToDelete);
+                this.context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogError("Error eliminando producto", ex.ToString());
+            }
+            base.SaveChanges();
+        }
     }
 }

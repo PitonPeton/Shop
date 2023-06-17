@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using shop.Infraestructure.Interfaces;
-using shop.Domain.Entities;
+using shop.Application.Dtos.Product;
+using shop.Domain.Entities.Products;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,7 +18,6 @@ namespace shop.Api.Controllers
             this.productRepository = productRepository;
         }
 
-        // GET: api/<ProductController>
         [HttpGet]
         public IActionResult Get()
         {
@@ -25,7 +25,6 @@ namespace shop.Api.Controllers
             return Ok(products);
         }
 
-        // GET api/<ProductController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -33,22 +32,49 @@ namespace shop.Api.Controllers
             return Ok(product);
         }
 
-        // POST api/<ProductController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("Guardar")]
+        public IActionResult Post([FromBody] ProductAddDtop productAdd)
         {
+            this.productRepository.Add(new Product()
+            {
+                productname = productAdd.productname,
+                unitprice = productAdd.unitprice,
+                creation_date = productAdd.change_date,
+                creation_user = productAdd.change_user
+            });
+            return Ok();
         }
 
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("Modificar")]
+        public IActionResult Put([FromBody] ProductUpdateDto productUpdate)
         {
+            Product productToUpdate = new Product()
+            {
+                productid = productUpdate.productid,
+                productname = productUpdate.productname,
+                unitprice = productUpdate.unitprice,
+                discontinued = productUpdate.discontinued,
+                modify_date = DateTime.Now,
+                modify_user = productUpdate.change_user
+            };
+            
+            this.productRepository.Update(productToUpdate);
+            return Ok();
         }
 
-        // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+        [HttpDelete("Borrar")]
+        public IActionResult Delete([FromBody] ProductDeleteDto productDelete)
+        {   
+            Product productToDelete = new Product()
+            {
+                productid = productDelete.productid,
+                deleted = productDelete.deleted,
+                delete_date = productDelete.change_date,
+                delete_user = productDelete.change_user,
+            };
+
+            this.productRepository.Delete(productToDelete);
+            return Ok();
         }
     }
 }
