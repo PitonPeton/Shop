@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using shop.Domain.Entities.Orders;
+using shop.Application.Dtos.Order;
 using shop.Infraestructure.Interfaces;
+using shop.Domain.Entities.Shippers;
 
 namespace shop.Api.Controllers
 {
@@ -31,21 +34,53 @@ namespace shop.Api.Controllers
         }
 
         // POST api/<OrderController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("Save")]
+        public IActionResult Post([FromBody] OrderAddDto orderAdd)
         {
+            this.orderRepository.Add(new Order()
+            {
+                orderdate = orderAdd.orderdate,
+                requireddate = orderAdd.requireddate,
+                freight = orderAdd.freight,
+                creation_user = orderAdd.change_user,
+                creation_date = orderAdd.change_date
+            });
+
+            return Ok();
         }
 
         // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("Update")]
+        public IActionResult Put(int id, [FromBody] OrderUpdateDto orderUpdate)
         {
+            Order orderToUpdate = new Order()
+            {
+                orderid = orderUpdate.orderid,
+                orderdate = orderUpdate.orderdate,
+                requireddate = orderUpdate.requireddate,
+                freight = orderUpdate.freight,
+                modify_user = orderUpdate.change_user,
+                modify_date = DateTime.Now
+            };
+
+            this.orderRepository.Update(orderToUpdate);
+            return Ok();
         }
 
         // DELETE api/<OrderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("Delete")]
+        public IActionResult Delete([FromBody] OrderRemoveDto orderDelete)
         {
+            Order orderToDelete = new Order()
+            {
+                orderid = orderDelete.orderid,
+                deleted = orderDelete.deleted,
+                delete_date = orderDelete.change_date,
+                delete_user = orderDelete.change_user
+            };
+
+            this.orderRepository.Delete(orderToDelete);
+            return Ok();
         }
     }
 }

@@ -44,7 +44,6 @@ namespace shop.Infraestructure.Core
 
         public virtual void Delete(TEntity entity)
         {
-            // Recordatorio: Modificar los datos de auditorio.
 
             this.entities.Remove(entity);
         }

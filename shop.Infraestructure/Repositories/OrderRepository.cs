@@ -46,22 +46,33 @@ namespace shop.Infraestructure.Repositories
             return orders;
         }
 
+        public OrderModel GetOrderById(int id)
+        {
+            OrderModel orderModel = new OrderModel();
+
+            try
+            {
+                Order order = this.GetEntity(id);
+
+                orderModel.orderid = order.orderid;
+                orderModel.orderdate = order.orderdate;
+                orderModel.requireddate = order.requireddate;
+                orderModel.freight = order.freight;
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogError("Error obteniendo ordenes", ex.ToString());
+            }
+            return orderModel;
+        }
+
         public override void Add(Order entity)
         {
 
             if (this.Exists(cd => cd.orderid == entity.orderid))
             {
-                throw new OrderException("");
-            }
-
-            base.SaveChanges();
-        }
-
-        public override void Delete(Order entity)
-        {
-            if (this.Exists(cd => cd.orderid == entity.orderid))
-            {
-                throw new OrderException("");
+                throw new OrderException("Orden Existe");
             }
 
             base.SaveChanges();
@@ -69,7 +80,34 @@ namespace shop.Infraestructure.Repositories
 
         public override void Update(Order entity)
         {
-            base.Update(entity);
+            Order orderToUpdate = this.GetEntity(entity.orderid);
+            orderToUpdate.orderid = entity.orderid;
+            orderToUpdate.orderdate = entity.orderdate;
+            orderToUpdate.requireddate = entity.requireddate;
+            orderToUpdate.freight = entity.freight;
+
+            this.context.Orders.Update(orderToUpdate);
+            this.context.SaveChanges();
+        }
+
+        public override void Delete(Order entity)
+        {
+            try
+            {
+                Order orderToDelete = this.GetEntity(entity.orderid);
+                orderToDelete.deleted = entity.deleted;
+                orderToDelete.delete_date = entity.delete_date;
+                orderToDelete.delete_user = entity.delete_user;
+
+                this.context.Orders.Update(orderToDelete);
+                this.context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogError("Error eliminando orden", ex.ToString());
+            }
+            base.SaveChanges();
         }
     }
 }

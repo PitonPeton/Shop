@@ -12,5 +12,7 @@ namespace shop.Infraestructure.Interfaces
     public interface IShipperRepository : IBaseRepository<Shipper>
     {
         List<ShipperModel> GetShippers();
+        ShipperModel GetShipperById(int id);
+
     }
 }

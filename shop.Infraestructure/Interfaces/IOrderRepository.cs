@@ -11,5 +11,7 @@ namespace shop.Infraestructure.Interfaces
     public interface IOrderRepository : IBaseRepository<Order>  
     {
         List<OrderModel> GetOrders();
+
+        OrderModel GetOrderById(int id);
     }
 }
