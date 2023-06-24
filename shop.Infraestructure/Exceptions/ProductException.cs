@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace shop.Infraestructure.Exceptions
 {
@@ -11,5 +9,13 @@ namespace shop.Infraestructure.Exceptions
 
         }
         
+    }
+    public class ProductDataException : Exception
+    {
+        public ProductDataException(string message) : base(message)
+        {
+
+        }
+
     }
 }

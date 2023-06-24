@@ -1,6 +1,8 @@
 ﻿﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.Extensions.Logging;
 using shop.Domain.Entities.Products;
 using shop.Infraestructure.Context;
@@ -58,6 +60,11 @@ namespace shop.Infraestructure.Repositories
             {
                 Product product = this.GetEntity(id);
 
+                if (product == null) 
+                {
+                    throw new ProductDataException("El producto no existe.");
+                }
+
                 productModel.productid = product.productid;
                 productModel.productname = product.productname;
                 productModel.unitprice = product.unitprice;
@@ -65,10 +72,14 @@ namespace shop.Infraestructure.Repositories
                 productModel.categoryid = product.categoryid;
                 productModel.supplierid = product.supplierid;
             }
+            catch (ProductDataException dex)
+            {
+                throw new ProductDataException(dex.Message);
+            }
             catch (Exception ex)
             {
-
-                this.logger.LogError("Error obteniendo producto", ex.ToString());
+                string error = "Error obteniendo producto";
+                this.logger.LogError(error, ex.ToString());
             }
             return productModel;
         }
@@ -88,6 +99,12 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Product productToUpdate = this.GetEntity(entity.productid);
+
+                if (productToUpdate == null)
+                {
+                    throw new ProductDataException("El producto no existe.");
+                }
+
                 productToUpdate.productid = entity.productid;
                 productToUpdate.productname = entity.productname;
                 productToUpdate.unitprice = entity.unitprice;
@@ -100,6 +117,10 @@ namespace shop.Infraestructure.Repositories
                 this.context.Products.Update(productToUpdate);
                 this.context.SaveChanges();
             }
+            catch (ProductDataException dex)
+            {
+                throw new ProductDataException(dex.Message);
+            }
             catch (Exception ex)
             {
                 this.logger.LogError("Error actualizando producto", ex.ToString());
@@ -110,6 +131,12 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Product productToDelete = this.GetEntity(entity.productid);
+
+                if (productToDelete == null)
+                {
+                    throw new ProductDataException("El producto no existe.");
+                }
+
                 productToDelete.deleted = entity.deleted;
                 productToDelete.delete_date = entity.delete_date;
                 productToDelete.delete_user = entity.delete_user;
@@ -117,9 +144,12 @@ namespace shop.Infraestructure.Repositories
                 this.context.Products.Update(productToDelete);
                 this.context.SaveChanges();
             }
+            catch (ProductDataException dex)
+            {
+                throw new ProductDataException(dex.Message);
+            }
             catch (Exception ex)
             {
-
                 this.logger.LogError("Error eliminando producto", ex.ToString());
             }
             base.SaveChanges();
