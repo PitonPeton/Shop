@@ -1,6 +1,6 @@
 ﻿namespace shop.Application.Dtos.Product
 {
-    public class ProductAddDtop : ProductDto
+    public class ProductAddDto : ProductDto
     {
 
     }

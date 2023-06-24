@@ -10,5 +10,6 @@ namespace shop.Infraestructure.Interfaces
     public interface IProductRepository : IBaseRepository<Product>
     {
         List<ProductModel> GetProducts();
+        ProductModel GetProductId(int id);
     }
 }

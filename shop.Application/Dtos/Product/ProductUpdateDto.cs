@@ -3,6 +3,5 @@
     public class ProductUpdateDto : ProductDto
     {
         public int productid { get; set; }
-        public bool discontinued { get; set; }
     }
 }
