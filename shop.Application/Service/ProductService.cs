@@ -9,6 +9,7 @@ using shop.Infraestructure.Exceptions;
 using shop.Infraestructure.Interfaces;
 using System;
 using shop.Infraestructure.Repositories;
+using shop.Application.Extentions;
 
 namespace shop.Application.Service
 {
@@ -68,6 +69,7 @@ namespace shop.Application.Service
         public ServiceResult Save(ProductAddDto model)
         {
             ServiceResult result = new ServiceResult();
+
             if (string.IsNullOrEmpty(model.productname))
             {
                 result.Message = "El nombre del producto es requerido.";
@@ -118,15 +120,10 @@ namespace shop.Application.Service
             }
             try
             {
-                this.productRepository.Add(new Product()
-                {
-                    productname = model.productname,
-                    unitprice = model.unitprice.Value,
-                    categoryid = model.categoryid.Value,
-                    supplierid = model.supplierid.Value,
-                    creation_date = DateTime.Now,
-                    creation_user = model.change_user.Value
-                });
+                var product = model.ConvertDtoAddToEntity();
+
+                this.productRepository.Add(product);
+                
                 result.Message = "Producto agregado correctamente.";
             }
             catch (ProductDataException pex)
@@ -197,17 +194,11 @@ namespace shop.Application.Service
             }
             try
             {
-                this.productRepository.Update(new Product()
-                {
-                    productid = model.productid,
-                    productname = model.productname,
-                    unitprice = model.unitprice.Value,
-                    discontinued = model.discontinued.Value,
-                    categoryid = model.categoryid.Value,
-                    supplierid = model.supplierid.Value,
-                    modify_date = DateTime.Now,
-                    modify_user = model.change_user.Value
-                });
+                var product = model.ConvertDtoUpdateToEntity();
+
+                this.productRepository.Update(product);
+
+                result.Message = "El producto se ha modificado correctamente.";
             }
             catch (ProductDataException dex)
             {
