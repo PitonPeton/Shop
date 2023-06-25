@@ -39,11 +39,8 @@ namespace shop.Api.Controllers
         {
             this.orderRepository.Add(new Order()
             {
-                orderdate = orderAdd.orderdate,
-                requireddate = orderAdd.requireddate,
-                freight = orderAdd.freight,
-                creation_user = orderAdd.change_user,
-                creation_date = orderAdd.change_date
+                freight = (decimal)orderAdd.freight,
+                creation_user = (int)orderAdd.change_user,
             });
 
             return Ok();
@@ -56,9 +53,7 @@ namespace shop.Api.Controllers
             Order orderToUpdate = new Order()
             {
                 orderid = orderUpdate.orderid,
-                orderdate = orderUpdate.orderdate,
-                requireddate = orderUpdate.requireddate,
-                freight = orderUpdate.freight,
+                freight = (decimal)orderUpdate.freight,
                 modify_user = orderUpdate.change_user,
                 modify_date = DateTime.Now
             };

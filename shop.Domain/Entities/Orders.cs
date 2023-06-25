@@ -11,11 +11,13 @@ namespace shop.Domain.Entities.Orders
         [Key]
         public int orderid { get; set; }
 
-        [ForeignKey("Customers")]
+        [ForeignKey("Customer")]
         public int? custid { get; set; }
 
         [ForeignKey("Employee")]
         public int empid { get; set; }
+
+        [ForeignKey("Shipper")]
         public int shipperid { get; set; }
         public decimal freight { get; set; }
         public DateTime requireddate { get; set; }
@@ -23,8 +25,28 @@ namespace shop.Domain.Entities.Orders
 
     }
 
-    [Table("Employees", Schema = "HR")]
+    [Table("Customers", Schema = "Sales")]
+    public class Customer
+    {
+        [Key]
+        public int custid { get; set; }
+        public string companyName { get; set; }
+        public string contactName { get; set; }
+        public string contactTitle { get; set; }
+        public string address { get; set; }
+        public string email { get; set; }
+        public string city { get; set; }
+        public string region { get; set; }
+        public string postalCode { get; set; }
+        public string country { get; set; }
+        public string phone { get; set; }
+        public string fax { get; set; }
+    }
+
+
+[Table("Employees", Schema = "HR")]
     public class Employee    {
+        [Key] 
         public int empid { get; set; }
         public string lastname { get; set; }
         public string firstname { get; set; }

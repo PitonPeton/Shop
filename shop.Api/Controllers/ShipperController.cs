@@ -46,7 +46,7 @@ namespace shop.Api.Controllers
                 shipregion = shipperAdd.shipregion,
                 shippeddate = shipperAdd.shippeddate,
                 shipcountry = shipperAdd.shipcountry,
-                creation_user = shipperAdd.change_user,
+                creation_user = (int)shipperAdd.change_user,
                 creation_date = shipperAdd.change_date
             });
 

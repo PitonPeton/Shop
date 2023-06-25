@@ -10,4 +10,12 @@ namespace shop.Infraestructure.Exceptions
         }
 
     }
+
+    public class OrderDataException : Exception
+    {
+        public OrderDataException(string message) : base(message)
+        {
+
+        }
+    }
 }

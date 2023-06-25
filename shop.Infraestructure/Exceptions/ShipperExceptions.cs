@@ -10,4 +10,12 @@ namespace shop.Infraestructure.Exceptions
         }
 
     }
+
+    public class ShipperDataException : Exception
+    {
+        public ShipperDataException(string message) : base(message)
+        {
+
+        }
+    }
 }

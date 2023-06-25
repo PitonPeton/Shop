@@ -32,7 +32,6 @@ namespace shop.Infraestructure.Repositories
             {
                 orders = this.context.Orders.Select(de => new OrderModel()
                 {
-                    orderid = de.orderid,
                     orderdate = de.orderdate,
                     requireddate = de.requireddate,
                     freight = de.freight
@@ -53,8 +52,6 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Order order = this.GetEntity(id);
-
-                orderModel.orderid = order.orderid;
                 orderModel.orderdate = order.orderdate;
                 orderModel.requireddate = order.requireddate;
                 orderModel.freight = order.freight;
