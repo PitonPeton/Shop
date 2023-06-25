@@ -1,4 +1,5 @@
-﻿using shop.Application.Core;
+﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using shop.Application.Core;
 using shop.Application.Dtos.Shipper;
 using shop.Domain.Entities.Shippers;
 using shop.Infraestructure.Exceptions;

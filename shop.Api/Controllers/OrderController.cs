@@ -29,7 +29,7 @@ namespace shop.Api.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var order = this.orderRepository.GetEntity(id);
+            var order = this.orderRepository.GetOrderById(id);
             return Ok(order);
         }
 

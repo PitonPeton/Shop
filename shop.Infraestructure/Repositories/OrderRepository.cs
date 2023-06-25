@@ -52,14 +52,24 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Order order = this.GetEntity(id);
+
+                if (order == null)
+                {
+                    throw new OrderDataException("La orden no existe.");
+                }
+        
                 orderModel.orderdate = order.orderdate;
                 orderModel.requireddate = order.requireddate;
                 orderModel.freight = order.freight;
             }
+            catch (OrderDataException dex)
+            {
+                throw new OrderDataException(dex.Message);
+            }
             catch (Exception ex)
             {
 
-                this.logger.LogError("Error obteniendo ordenes", ex.ToString());
+                this.logger.LogError("Error obteniendo orden", ex.ToString());
             }
             return orderModel;
         }
@@ -72,19 +82,37 @@ namespace shop.Infraestructure.Repositories
                 throw new OrderException("Orden Existe");
             }
 
+            base.Add(entity);
             base.SaveChanges();
         }
 
         public override void Update(Order entity)
         {
-            Order orderToUpdate = this.GetEntity(entity.orderid);
-            orderToUpdate.orderid = entity.orderid;
-            orderToUpdate.orderdate = entity.orderdate;
-            orderToUpdate.requireddate = entity.requireddate;
-            orderToUpdate.freight = entity.freight;
+            try
+            {
+                Order orderToUpdate = this.GetEntity(entity.orderid);
 
-            this.context.Orders.Update(orderToUpdate);
-            this.context.SaveChanges();
+                if (orderToUpdate == null)
+                {
+                    throw new OrderDataException("La orden no existe.");
+                }
+
+                orderToUpdate.orderid = entity.orderid;
+                orderToUpdate.orderdate = entity.orderdate;
+                orderToUpdate.requireddate = entity.requireddate;
+                orderToUpdate.freight = entity.freight;
+
+                this.context.Orders.Update(orderToUpdate);
+                this.context.SaveChanges();
+            }
+            catch (OrderDataException dex)
+            {
+                throw new OrderDataException(dex.Message);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError("Error actualizando orden", ex.ToString());
+            }
         }
 
         public override void Delete(Order entity)
@@ -92,6 +120,12 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Order orderToDelete = this.GetEntity(entity.orderid);
+
+                if (orderToDelete == null)
+                {
+                    throw new OrderDataException("La orden no existe.");
+                }
+
                 orderToDelete.deleted = entity.deleted;
                 orderToDelete.delete_date = entity.delete_date;
                 orderToDelete.delete_user = entity.delete_user;
@@ -99,9 +133,12 @@ namespace shop.Infraestructure.Repositories
                 this.context.Orders.Update(orderToDelete);
                 this.context.SaveChanges();
             }
+            catch (OrderDataException dex)
+            {
+                throw new OrderDataException(dex.Message);
+            }
             catch (Exception ex)
             {
-
                 this.logger.LogError("Error eliminando orden", ex.ToString());
             }
             base.SaveChanges();

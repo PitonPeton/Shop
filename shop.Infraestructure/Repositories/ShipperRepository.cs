@@ -54,15 +54,23 @@ namespace shop.Infraestructure.Repositories
             {
                 Shipper shipper = this.GetEntity(id);
 
+                if (shipper == null)
+                {
+                    throw new ShipperDataException("El expedido no existe.");
+                }
+
                 shipperModel.shipperid = shipper.shipperid;
                 shipperModel.companyname = shipper.companyname;
                 shipperModel.phone = shipper.phone;
                 shipperModel.shippeddate = shipper.shippeddate;
                 shipperModel.shipcountry = shipper.shipcountry;
             }
+            catch (ShipperDataException dex)
+            {
+                throw new ShipperDataException(dex.Message);
+            }
             catch (Exception ex)
             {
-
                 this.logger.LogError("Error obteniendo expedidos", ex.ToString());
             }
             return shipperModel;
@@ -85,6 +93,12 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Shipper shipperToUpdate = this.GetEntity(entity.shipperid);
+
+                if (shipperToUpdate == null)
+                {
+                    throw new ShipperDataException("El expedido no existe.");
+                }
+
                 shipperToUpdate.shipperid = entity.shipperid;
                 shipperToUpdate.companyname = entity.companyname;
                 shipperToUpdate.phone = entity.phone;
@@ -99,7 +113,11 @@ namespace shop.Infraestructure.Repositories
                 this.context.Shippers.Update(shipperToUpdate);
                 this.context.SaveChanges();
             }
-            catch(Exception ex)
+            catch (ShipperDataException dex)
+            {
+                throw new ShipperDataException(dex.Message);
+            }
+            catch (Exception ex)
             {
                 this.logger.LogError("Error actualizando expedidos", ex.ToString());
             };
@@ -110,12 +128,22 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Shipper shipperToDelete = this.GetEntity(entity.shipperid);
+
+                if (shipperToDelete == null)
+                {
+                    throw new OrderDataException("La orden no existe.");
+                }
+
                 shipperToDelete.deleted = entity.deleted;
                 shipperToDelete.delete_date = entity.delete_date;
                 shipperToDelete.delete_user = entity.delete_user;
 
                 this.context.Shippers.Update(shipperToDelete);
                 this.context.SaveChanges();
+            }
+            catch (ShipperDataException dex)
+            {
+                throw new ShipperDataException(dex.Message);
             }
             catch (Exception ex)
             {

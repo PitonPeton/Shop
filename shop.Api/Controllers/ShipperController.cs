@@ -28,7 +28,7 @@ namespace shop.Api.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var shipper = this.shipperRepository.GetEntity(id);
+            var shipper = this.shipperRepository.GetShipperById(id);
             return Ok(shipper);
         }
 
