@@ -17,7 +17,6 @@ namespace shop.Application.Service
     {
         private readonly IProductRepository productRepository;
         private readonly ILogger<ProductService> logger;
-
         public ProductService(IProductRepository productRepository, ILogger<ProductService> logger) 
         {
             this.productRepository = productRepository;
@@ -70,54 +69,13 @@ namespace shop.Application.Service
         {
             ServiceResult result = new ServiceResult();
 
-            if (string.IsNullOrEmpty(model.productname))
+            result = model.IsValidProduct();
+
+            if (!result.Success)
             {
-                result.Message = "El nombre del producto es requerido.";
-                result.Success = false;
                 return result;
             }
-            if (model.productname.Length > 40)
-            {
-                result.Message = "El nombre del producto tiene una longitud invalida.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.unitprice.HasValue)
-            {
-                result.Message = "El precio del producto es requerido.";
-                result.Success = false;
-                return result;
-            }
-            if (model.unitprice <= 0)
-            {
-                result.Message = "El precio del producto no puede ser 0";
-                result.Success = false;
-                return result;
-            }
-            if (!model.discontinued.HasValue)
-            {
-                result.Message = "Se requiere saber si el producto esta descontinuado.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.supplierid.HasValue)
-            {
-                result.Message = "Se requiere la id del suplidor.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.categoryid.HasValue)
-            {
-                result.Message = "Se requiere la id de la categoria del producto.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.change_user.HasValue)
-            {
-                result.Message = "Se requiere un usuario.";
-                result.Success = false;
-                return result;
-            }
+
             try
             {
                 var product = model.ConvertDtoAddToEntity();
@@ -143,55 +101,14 @@ namespace shop.Application.Service
         public ServiceResult Update(ProductUpdateDto model)
         {
             ServiceResult result = new ServiceResult();
-            
-            if (string.IsNullOrEmpty(model.productname))
-            {
-                result.Message = "El nombre del producto es requerido.";
-                result.Success = false;
-                return result;
+
+            result = model.IsValidProduct();
+
+            if (!result.Success) 
+            { 
+                return result; 
             }
-            if (model.productname.Length > 40)
-            {
-                result.Message = "El nombre del producto tiene una longitud invalida.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.unitprice.HasValue)
-            {
-                result.Message = "El precio del producto es requerido.";
-                result.Success = false;
-                return result;
-            }
-            if (model.unitprice <= 0)
-            {
-                result.Message = "El precio del producto no puede ser 0";
-                result.Success = false;
-                return result;
-            }
-            if (!model.discontinued.HasValue)
-            {
-                result.Message = "Se requiere saber si el producto esta descontinuado.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.supplierid.HasValue)
-            {
-                result.Message = "Se requiere la id del suplidor.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.categoryid.HasValue)
-            {
-                result.Message = "Se requiere la id de la categoria del producto.";
-                result.Success = false;
-                return result;
-            }
-            if (!model.change_user.HasValue)
-            {
-                result.Message = "Se requiere un usuario.";
-                result.Success = false;
-                return result;
-            }
+
             try
             {
                 var product = model.ConvertDtoUpdateToEntity();
@@ -217,13 +134,14 @@ namespace shop.Application.Service
         public ServiceResult Delete(ProductDeleteDto model)
         {
             ServiceResult result = new ServiceResult();
-            
-            if (!model.change_user.HasValue)
+
+            result = model.ValidUser();
+
+            if (!result.Success)
             {
-                result.Message = "Se requiere un usuario.";
-                result.Success = false;
                 return result;
             }
+
             try
             {
                 this.productRepository.Delete(new Product()

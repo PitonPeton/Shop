@@ -1,0 +1,57 @@
+﻿@model shop.WebApp.Models.ProductModel
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+
+<style>
+    #botones{
+        margin-top: 25px;
+    }
+    input{
+        height: 30px;
+    }
+
+</style>
+
+<h1>Create Product</h1>
+
+<br />
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="productname" class="control-label">Product</label>
+                <input asp-for="productname" class="form-control" />
+                <span asp-validation-for="productname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="unitprice" class="control-label">Unit Price</label>
+                <input asp-for="unitprice" class="form-control" />
+                <span asp-validation-for="unitprice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="discontinued" class="control-label">Discontinued</label>
+                <input asp-for="discontinued" class="form-control" />
+                <span asp-validation-for="discontinued" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="supplierid" class="control-label">Supplier Id</label>
+                <input asp-for="supplierid" class="form-control" />
+                <span asp-validation-for="supplierid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoryid" class="control-label">Category Id</label>
+                <input asp-for="categoryid" class="form-control" />
+                <span asp-validation-for="categoryid" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="botones">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="reset" value="Clear" class="btn btn-danger" />
+            </div>
+		</form>
+	</div>
+</div>

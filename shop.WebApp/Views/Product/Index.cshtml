@@ -1,0 +1,97 @@
+﻿@model IEnumerable<shop.WebApp.Models.ProductModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<style>
+
+    .table{
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .table thead tr{
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .table th, .table td{
+        padding: 12px 15px;
+    }
+
+    .table tbody tr{
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+</style>
+
+<h1>Products</h1>
+
+<p>
+	<a asp-action="Create">Crear nuevo producto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Unit Price
+            </th>
+            <th>
+                Discontinued
+            </th>
+            <th>
+                Supplier Id
+            </th>
+            <th>
+                Category Id
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.productname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.unitprice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.discontinued)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.supplierid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoryid)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id= item.productid }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.productid })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
