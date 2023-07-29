@@ -1,8 +1,0 @@
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.csproj.AssemblyReference.cache
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.AssemblyInfoInputs.cache
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.AssemblyInfo.cs
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.csproj.CoreCompileInputs.cache
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.RazorAssemblyInfo.cache
-C:\Users\angel\source\repos\Shop\shop.Web\obj\Debug\netcoreapp3.1\shop.Web.RazorAssemblyInfo.cs
