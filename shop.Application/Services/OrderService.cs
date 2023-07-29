@@ -1,12 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Microsoft.Extensions.Logging;
+using shop.Application.Contract;
 using shop.Application.Core;
 using shop.Application.Dtos.Order;
 using shop.Domain.Entities.Orders;
 using shop.Infraestructure.Exceptions;
 using shop.Infraestructure.Interfaces;
 using System;
-using shop.Application.Contract;
-using Microsoft.Extensions.Logging;
+using shop.Infraestructure.Repositories;
+using shop.Application.Extentions;
 
 namespace shop.Application.Service
 {
@@ -14,7 +16,6 @@ namespace shop.Application.Service
     {
         private readonly IOrderRepository orderRepository;
         private readonly ILogger<OrderService> logger;
-
         public OrderService(IOrderRepository orderRepository, ILogger<OrderService> logger)
         {
             this.orderRepository = orderRepository;
@@ -48,10 +49,10 @@ namespace shop.Application.Service
             {
                 result.Data = this.orderRepository.GetOrderById(id);
             }
-            catch (OrderDataException ex)
+            catch (OrderDataException pex)
             {
                 result.Success = false;
-                result.Message = ex.Message;
+                result.Message = pex.Message;
                 this.logger.LogError($"{result.Message}");
             }
             catch (Exception ex)
@@ -66,32 +67,20 @@ namespace shop.Application.Service
         public ServiceResult Save(OrderAddDto model)
         {
             ServiceResult result = new ServiceResult();
-            if (!model.freight.HasValue)
+
+            result = model.IsValidOrder();
+
+            if (!result.Success)
             {
-                result.Message = "El peso de transporte es requerido.";
-                result.Success = false;
                 return result;
             }
-            if (model.freight <= 0)
-            {
-                result.Message = "El peso de transporte no puede ser 0";
-                result.Success = false;
-                return result;
-            }
-            if (!model.change_user.HasValue)
-            {
-                result.Message = "Se requiere un usuario.";
-                result.Success = false;
-                return result;
-            }
+
             try
             {
-                this.orderRepository.Add(new Order()
-                {
-                    freight = (decimal)model.freight,
-                    creation_user = (int)model.change_user,
-                    creation_date = model.change_date
-                });
+                var order = model.ConvertDtoAddToEntity();
+
+                this.orderRepository.Add(order);
+
                 result.Message = "Orden agregada correctamente.";
             }
             catch (OrderDataException pex)
@@ -112,35 +101,20 @@ namespace shop.Application.Service
         {
             ServiceResult result = new ServiceResult();
 
-            if (!model.freight.HasValue)
+            result = model.IsValidOrder();
+
+            if (!result.Success)
             {
-                result.Message = "El peso de transporte es requerido.";
-                result.Success = false;
                 return result;
             }
-            if (model.freight <= 0)
-            {
-                result.Message = "El peso de transporte no puede ser 0";
-                result.Success = false;
-                return result;
-            }
-            if (!model.change_user.HasValue)
-            {
-                result.Message = "Se requiere un usuario.";
-                result.Success = false;
-                return result;
-            }
+
             try
             {
-                this.orderRepository.Update(new Order()
-                {
-                    orderid = model.orderid,
-                    orderdate = model.orderdate,
-                    requireddate = model.requireddate,
-                    freight = (decimal)model.freight,
-                    modify_user = model.change_user,
-                    modify_date = DateTime.Now
-                });
+                var order = model.ConvertDtoUpdateToEntity();
+
+                this.orderRepository.Update(order);
+
+                result.Message = "La orden se ha modificado correctamente.";
             }
             catch (OrderDataException dex)
             {
@@ -160,20 +134,21 @@ namespace shop.Application.Service
         {
             ServiceResult result = new ServiceResult();
 
-            if (!model.change_user.HasValue)
+            result = model.ValidUser();
+
+            if (!result.Success)
             {
-                result.Message = "Se requiere un usuario.";
-                result.Success = false;
                 return result;
             }
+
             try
             {
                 this.orderRepository.Delete(new Order()
                 {
                     orderid = model.orderid,
-                    deleted = model.deleted,
-                    delete_date = DateTime.Now,
-                    delete_user = model.change_user.Value,
+                    Deleted = model.Deleted,
+                    Delete_date = DateTime.Now,
+                    Delete_user = model.Change_user.Value,
                 });
 
                 result.Message = "Orden eliminada correctamente.";

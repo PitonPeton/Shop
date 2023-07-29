@@ -7,6 +7,6 @@ namespace shop.Application.Dtos.Shipper
     public class ShipperRemoveDto : DtoBase
     {
         public int shipperid { get; set; }
-        public bool deleted { get; set; }
+        public bool Deleted { get; set; }
     }
 }

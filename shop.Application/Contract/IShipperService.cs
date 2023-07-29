@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using shop.Application.Core;
+using shop.Application.Dtos.Shipper;
 
 namespace shop.Application.Contract
 {
-    internal interface IShipperService
+    public interface IShipperService : IBaseService<ShipperAddDto,
+                                                    ShipperUpdateDto,
+                                                    ShipperRemoveDto>
     {
     }
 }

@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using shop.Application.Contract;
+using shop.Application.Service;
 using shop.Infraestructure.Context;
 using shop.Infraestructure.Interfaces;
 using shop.Infraestructure.Repositories;
@@ -20,6 +22,12 @@ builder.Services.AddDbContext<shopContext>(options => options.UseSqlServer(build
 builder.Services.AddTransient<IShipperRepository, ShipperRepository>();
 
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+
+// registros de app services //
+
+builder.Services.AddTransient<IOrderService, OrderService>();
+
+builder.Services.AddTransient<IShipperService, ShipperService>();
 
 
 var app = builder.Build();

@@ -134,9 +134,9 @@ namespace shop.Infraestructure.Repositories
                     throw new OrderDataException("La orden no existe.");
                 }
 
-                shipperToDelete.deleted = entity.deleted;
-                shipperToDelete.delete_date = entity.delete_date;
-                shipperToDelete.delete_user = entity.delete_user;
+                shipperToDelete.Deleted = entity.Deleted;
+                shipperToDelete.Delete_date = entity.Delete_date;
+                shipperToDelete.Delete_user = entity.Delete_user;
 
                 this.context.Shippers.Update(shipperToDelete);
                 this.context.SaveChanges();

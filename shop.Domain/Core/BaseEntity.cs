@@ -6,16 +6,16 @@ namespace shop.Domain.Core
     {
         public BaseEntity()
         {
-            this.creation_date = DateTime.Now;
-            this.deleted = false;
+            this.Creation_date = DateTime.Now;
+            this.Deleted = false;
         }
 
-        public int creation_user { get; set; }
-        public DateTime creation_date { get; set; }
-        public int? modify_user { get; set; }
-        public DateTime? modify_date { get; set; }
-        public int? delete_user { get; set; }
-        public DateTime? delete_date { get; set; }
-        public bool deleted { get; set; }
+        public int Creation_user { get; set; }
+        public DateTime Creation_date { get; set; }
+        public int? Modify_user { get; set; }
+        public DateTime? Modify_date { get; set; }
+        public int? Delete_user { get; set; }
+        public DateTime? Delete_date { get; set; }
+        public bool Deleted { get; set; }
     }
 }

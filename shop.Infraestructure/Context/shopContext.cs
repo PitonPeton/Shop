@@ -10,9 +10,11 @@ namespace shop.Infraestructure.Context
 
         public shopContext(DbContextOptions<shopContext> options) : base(options)
         {
+
         }
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<Shipper> Shippers { get; set; }
+
     }
 }

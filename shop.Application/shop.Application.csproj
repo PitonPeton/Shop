@@ -6,9 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Compile Remove="Models\**" />
+    <Compile Remove="Responses\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Responses\**" />
+    <None Remove="Models\**" />
+    <None Remove="Responses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Extensions\" />
-    <Folder Include="Responses\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -30,11 +30,17 @@ namespace shop.Infraestructure.Repositories
 
             try
             {
-                orders = this.context.Orders.Select(de => new OrderModel()
+                orders = this.context.Orders
+                            .Where(cd => !cd.Deleted)
+                            .Select(de => new OrderModel()
                 {
-                    orderdate = de.orderdate,
+                    orderid = de.orderid,
+                    custid = de.custid,
+                    shipperid = de.shipperid,
+                    empid = de.empid,
+                    freight = de.freight,
                     requireddate = de.requireddate,
-                    freight = de.freight
+                    orderdate = de.orderdate               
                 }).ToList();
             }
             catch(Exception ex)
@@ -57,10 +63,12 @@ namespace shop.Infraestructure.Repositories
                 {
                     throw new OrderDataException("La orden no existe.");
                 }
-        
-                orderModel.orderdate = order.orderdate;
-                orderModel.requireddate = order.requireddate;
+
+                orderModel.orderid = order.orderid;
+                orderModel.empid = order.empid;
                 orderModel.freight = order.freight;
+                orderModel.requireddate = order.requireddate;
+                orderModel.orderdate = order.orderdate;                
             }
             catch (OrderDataException dex)
             {
@@ -90,24 +98,18 @@ namespace shop.Infraestructure.Repositories
         {
             try
             {
-                Order orderToUpdate = this.GetEntity(entity.orderid);
-
-                if (orderToUpdate == null)
-                {
-                    throw new OrderDataException("La orden no existe.");
-                }
+                Order orderToUpdate = base.GetEntity(entity.orderid);
 
                 orderToUpdate.orderid = entity.orderid;
-                orderToUpdate.orderdate = entity.orderdate;
-                orderToUpdate.requireddate = entity.requireddate;
+                orderToUpdate.custid = entity.custid;
+                orderToUpdate.empid = entity.empid;
+                orderToUpdate.shipperid = entity.shipperid;
                 orderToUpdate.freight = entity.freight;
+                orderToUpdate.Modify_date = DateTime.Now;
+                orderToUpdate.Modify_user = entity.Modify_user;
 
-                this.context.Orders.Update(orderToUpdate);
-                this.context.SaveChanges();
-            }
-            catch (OrderDataException dex)
-            {
-                throw new OrderDataException(dex.Message);
+                base.Update(orderToUpdate);
+                base.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -119,19 +121,19 @@ namespace shop.Infraestructure.Repositories
         {
             try
             {
-                Order orderToDelete = this.GetEntity(entity.orderid);
+                Order orderToDelete = base.GetEntity(entity.orderid);
 
                 if (orderToDelete == null)
                 {
                     throw new OrderDataException("La orden no existe.");
                 }
 
-                orderToDelete.deleted = entity.deleted;
-                orderToDelete.delete_date = entity.delete_date;
-                orderToDelete.delete_user = entity.delete_user;
+                orderToDelete.Deleted = true;
+                orderToDelete.Delete_date = entity.Delete_date;
+                orderToDelete.Delete_user = entity.Delete_user;
 
-                this.context.Orders.Update(orderToDelete);
-                this.context.SaveChanges();
+                base.Update(orderToDelete);
+                base.SaveChanges();
             }
             catch (OrderDataException dex)
             {
@@ -141,7 +143,9 @@ namespace shop.Infraestructure.Repositories
             {
                 this.logger.LogError("Error eliminando orden", ex.ToString());
             }
-            base.SaveChanges();
         }
+
+        
     }
 }
+
