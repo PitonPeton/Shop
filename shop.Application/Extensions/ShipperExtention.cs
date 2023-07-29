@@ -98,6 +98,7 @@ namespace shop.Application.Extentions
                 shipname = shipperAddDto.shipname,
                 shipaddress = shipperAddDto.shipaddress,
                 shipcity = shipperAddDto.shipcity,
+                shippostalcode = shipperAddDto.shippostalcode,
                 shipregion = shipperAddDto.shipregion,
                 shippeddate = shipperAddDto.shippeddate,
                 shipcountry = shipperAddDto.shipcountry,
@@ -109,16 +110,18 @@ namespace shop.Application.Extentions
         {
             return new Shipper()
             {
+                shipperid = shipperUpdateDto.shipperid,
                 companyname = shipperUpdateDto.companyname,
                 phone = shipperUpdateDto.phone,
                 shipname = shipperUpdateDto.shipname,
                 shipaddress = shipperUpdateDto.shipaddress,
                 shipcity = shipperUpdateDto.shipcity,
+                shippostalcode = shipperUpdateDto.shippostalcode,
                 shipregion = shipperUpdateDto.shipregion,
                 shippeddate = shipperUpdateDto.shippeddate,
                 shipcountry = shipperUpdateDto.shipcountry,
-                Creation_user = shipperUpdateDto.Change_user.Value,
-                Creation_date = DateTime.Now
+                Modify_user = shipperUpdateDto.Change_user.Value,
+                Modify_date = DateTime.Now
             };
         }
     }

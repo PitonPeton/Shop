@@ -34,6 +34,11 @@ namespace shop.Infraestructure.Repositories
                     shipperid = de.shipperid,
                     companyname = de.companyname,
                     phone = de.phone,
+                    shipname = de.shipname,
+                    shipaddress = de.shipaddress,
+                    shipcity = de.shipcity,
+                    shippostalcode = de.shippostalcode,
+                    shipregion = de.shipregion,
                     shipcountry = de.shipcountry,
                     shippeddate = de.shippeddate,
                 }).ToList();

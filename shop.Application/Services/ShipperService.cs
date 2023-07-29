@@ -81,7 +81,7 @@ namespace shop.Application.Service
 
                 this.shipperRepository.Add(shipper);
 
-                result.Message = "Orden agregada correctamente.";
+                result.Message = "Expedido agregado correctamente.";
             }
             catch (ShipperDataException pex)
             {

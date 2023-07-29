@@ -6,6 +6,5 @@ namespace shop.Application.Dtos.Shipper
 {
     public class ShipperAddDto : ShipperDto
     {
-
     }
 }
