@@ -1,7 +1,0 @@
-C:\Users\angel\source\repos\Shop\shop.Api\obj\Debug\net5.0\shop.Api.csproj.AssemblyReference.cache
-C:\Users\angel\source\repos\Shop\shop.Api\obj\Debug\net5.0\shop.Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\angel\source\repos\Shop\shop.Api\obj\Debug\net5.0\shop.Api.AssemblyInfoInputs.cache
-C:\Users\angel\source\repos\Shop\shop.Api\obj\Debug\net5.0\shop.Api.AssemblyInfo.cs
-C:\Users\angel\source\repos\Shop\shop.Api\obj\Debug\net5.0\shop.Api.csproj.CoreCompileInputs.cache
-C:\Users\angel\source\repos\Shop\shop.Api\obj\Debug\net5.0\shop.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\angel\source\repos\Shop\shop.Api\obj\Debug\net5.0\shop.Api.MvcApplicationPartsAssemblyInfo.cache
