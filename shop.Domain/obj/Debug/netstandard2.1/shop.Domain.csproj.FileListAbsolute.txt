@@ -1,0 +1,10 @@
+C:\Users\angel\source\repos\Shop\shop.Domain\bin\Debug\netstandard2.1\shop.Domain.deps.json
+C:\Users\angel\source\repos\Shop\shop.Domain\bin\Debug\netstandard2.1\shop.Domain.dll
+C:\Users\angel\source\repos\Shop\shop.Domain\bin\Debug\netstandard2.1\shop.Domain.pdb
+C:\Users\angel\source\repos\Shop\shop.Domain\obj\Debug\netstandard2.1\shop.Domain.csproj.AssemblyReference.cache
+C:\Users\angel\source\repos\Shop\shop.Domain\obj\Debug\netstandard2.1\shop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\source\repos\Shop\shop.Domain\obj\Debug\netstandard2.1\shop.Domain.AssemblyInfoInputs.cache
+C:\Users\angel\source\repos\Shop\shop.Domain\obj\Debug\netstandard2.1\shop.Domain.AssemblyInfo.cs
+C:\Users\angel\source\repos\Shop\shop.Domain\obj\Debug\netstandard2.1\shop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\angel\source\repos\Shop\shop.Domain\obj\Debug\netstandard2.1\shop.Domain.dll
+C:\Users\angel\source\repos\Shop\shop.Domain\obj\Debug\netstandard2.1\shop.Domain.pdb

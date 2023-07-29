@@ -1,0 +1,10 @@
+C:\Users\angel\source\repos\Shop\shop.IOC\bin\Debug\netstandard2.1\shop.IOC.deps.json
+C:\Users\angel\source\repos\Shop\shop.IOC\bin\Debug\netstandard2.1\shop.IOC.dll
+C:\Users\angel\source\repos\Shop\shop.IOC\bin\Debug\netstandard2.1\shop.IOC.pdb
+C:\Users\angel\source\repos\Shop\shop.IOC\obj\Debug\netstandard2.1\shop.IOC.csproj.AssemblyReference.cache
+C:\Users\angel\source\repos\Shop\shop.IOC\obj\Debug\netstandard2.1\shop.IOC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\source\repos\Shop\shop.IOC\obj\Debug\netstandard2.1\shop.IOC.AssemblyInfoInputs.cache
+C:\Users\angel\source\repos\Shop\shop.IOC\obj\Debug\netstandard2.1\shop.IOC.AssemblyInfo.cs
+C:\Users\angel\source\repos\Shop\shop.IOC\obj\Debug\netstandard2.1\shop.IOC.csproj.CoreCompileInputs.cache
+C:\Users\angel\source\repos\Shop\shop.IOC\obj\Debug\netstandard2.1\shop.IOC.dll
+C:\Users\angel\source\repos\Shop\shop.IOC\obj\Debug\netstandard2.1\shop.IOC.pdb
