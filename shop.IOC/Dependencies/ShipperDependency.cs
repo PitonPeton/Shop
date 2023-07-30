@@ -11,7 +11,7 @@ namespace shop.IOC.Dependencies
 {
     public static class ShipperDependency
     {
-        public static void AddShipperDependecy(this IServiceCollection services)
+        public static void AddShipperDependency(this IServiceCollection services)
         {
             services.AddScoped<IShipperRepository, ShipperRepository>();
             services.AddTransient<IShipperService, ShipperService>();

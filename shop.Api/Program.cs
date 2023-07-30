@@ -4,6 +4,7 @@ using shop.Application.Service;
 using shop.Infraestructure.Context;
 using shop.Infraestructure.Interfaces;
 using shop.Infraestructure.Repositories;
+using shop.IOC.Dependencies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,9 @@ builder.Services.AddTransient<IOrderService, OrderService>();
 
 builder.Services.AddTransient<IShipperService, ShipperService>();
 
+//my Dependencies
+builder.Services.AddOrderDependency();
+builder.Services.AddShipperDependency();
 
 var app = builder.Build();
 
@@ -40,6 +44,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+
+//app.UseCors();
 
 app.MapControllers();
 
