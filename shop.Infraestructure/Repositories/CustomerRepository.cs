@@ -64,7 +64,7 @@ namespace shop.Infraestructure.Repositories
             try
             {
                 Customer customer = this.GetEntity(id);
-
+               
                 if (customer == null) 
                 {
                     throw new CustomerDataException("El cliente no existe.");

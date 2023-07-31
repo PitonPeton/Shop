@@ -1,0 +1,153 @@
+﻿@model shop.WebApp.Models.CustomerModel
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h1>Customer Details</h1>
+<!--
+<div>
+	<br />
+	<dl class="row">
+
+		<dt class="col-sm-2">
+            Company Name
+		</dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.companyname)
+        </dd>
+        <dt class="col-sm-2">
+            Contact Name
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.contactname)
+        </dd>
+        <dt class="col-sm-2">
+            Contact Title
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.contacttitle)
+        </dd>
+        <dt class="col-sm-2">
+            Address
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.address)
+        </dd>
+        <dt class="col-sm-2">
+            E-mail
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class="col-sm-2">
+            City
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.city)
+        </dd>
+        <dt class="col-sm-2">
+            Region
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.region)
+        </dd>
+        <dt class="col-sm-2">
+            Postal Code
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.postalcode)
+        </dd>
+        <dt class="col-sm-2">
+            Country
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.country)
+        </dd>
+        <dt class="col-sm-2">
+            Phone
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.phone)
+        </dd>
+        <dt class="col-sm-2">
+            Fax
+        </dt>
+        <dd class="col-sm-10">
+@Html.DisplayFor(model => model.fax)
+        </dd>
+	</dl>
+</div>
+-->
+<div>
+    <table class="table">
+        <tr>
+            <th>Company Name</th>
+            <td>
+                @Html.DisplayFor(model => model.companyname)
+            </td>
+        </tr>
+        <tr>
+            <th>Contact Name</th>
+            <td>
+                @Html.DisplayFor(model => model.contactname)
+            </td>
+        </tr>
+        <tr>
+            <th>Contact Title</th>
+            <td>
+                @Html.DisplayFor(model => model.contacttitle)
+            </td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>
+                @Html.DisplayFor(model => model.address)
+            </td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td>
+                @Html.DisplayFor(model => model.email)
+            </td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>
+                @Html.DisplayFor(model => model.city)
+            </td>
+        </tr>
+        <tr>
+            <th>Region</th>
+            <td>
+                @Html.DisplayFor(model => model.region)
+            </td>
+        </tr>
+        <tr>
+            <th>Postal Code</th>
+            <td>
+                @Html.DisplayFor(model => model.postalcode)
+            </td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>
+                @Html.DisplayFor(model => model.country)
+            </td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>
+                @Html.DisplayFor(model => model.phone)
+            </td>
+        </tr>
+        <tr>
+            <th>Fax</th>
+            <td>
+                @Html.DisplayFor(model => model.fax)
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Edit","Edit", new { id = Model.custid }) | <a asp-action="Index">Vuelta a la lista</a>
+</div>

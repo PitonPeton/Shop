@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace shop.Infraestructure.Models
+﻿namespace shop.WebApp.Models
 {
     public class CustomerModel
     {
