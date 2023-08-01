@@ -1,0 +1,87 @@
+﻿@model shop.Web.Models.ShipperModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    #botones {
+        margin: 25px 0 25px 0;
+    }
+
+    input {
+        height: 30px;
+    }
+
+</style>
+
+<h1>Edit Shipper</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="companyname" class="control-label">Company</label>
+                <input asp-for="companyname" class="form-control" />
+                <span asp-validation-for="companyname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipname" class="control-label">Shipper</label>
+                <input asp-for="shipname" class="form-control" />
+                <span asp-validation-for="shipname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phone" class="control-label">Phone</label>
+                <input asp-for="phone" class="form-control" />
+                <span asp-validation-for="phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipaddress" class="control-label">Address</label>
+                <input asp-for="shipaddress" class="form-control" />
+                <span asp-validation-for="shipaddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipcity" class="control-label">City</label>
+                <input asp-for="shipcity" class="form-control" />
+                <span asp-validation-for="shipcity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipregion" class="control-label">Region</label>
+                <input asp-for="shipregion" class="form-control" />
+                <span asp-validation-for="shipregion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shippostalcode" class="control-label">Postal Code</label>
+                <input asp-for="shippostalcode" class="form-control" />
+                <span asp-validation-for="shippostalcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipcountry" class="control-label">Country</label>
+                <input asp-for="shipcountry" class="form-control" />
+                <span asp-validation-for="shipcountry" class="text-danger"></span>
+            </div>
+
+            @*
+            <div class="form-group">
+                <label asp-for="discontinued" class="control-label">Discontinued</label>
+                <input asp-for="discontinued" class="form-control" />
+                <span asp-validation-for="discontinued" class="text-danger"></span>
+            </div>
+            *@
+
+            <div class="form-group" id="botones">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Vuelta a la lista</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,167 @@
+﻿@model shop.Web.Models.ShipperModel
+@{
+	ViewData["Title"] = "Details";
+}
+
+<style>
+
+    .table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .table th {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .table th, .table td {
+        padding: 12px 15px;
+    }
+    
+    .table th{
+        min-width: 100px;
+    }
+
+    .table td{
+        min-width: 250px;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+</style>
+
+<h1>Shipper Details</h1>
+<!--
+<div>
+	<br />
+	<dl class="row">
+
+		<dt class="col-sm-2">
+            Shipper Id
+		</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.shipperid)
+        </dd>
+        <dt class="col-sm-2">
+            Company
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.companyname)
+        </dd>
+        <dt class="col-sm-2">
+            Shipper
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.shipname)
+        </dd>
+        <dt class="col-sm-2">
+            Phone
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+        <dt class="col-sm-2">
+            Address
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.shipaddress)
+        </dd>
+            City
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.shipcity)
+        </dd>
+            Region
+        </dt>
+        <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.shipregion)
+        </dd>
+            Postal Code
+        </dt>
+        <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.shippostalcode)
+        </dd>
+            Country
+        </dt>
+        <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.shipcountry)
+        </dd>
+	</dl>
+</div>
+-->
+<div>
+    <table class="table">
+        <tr>
+            <th>Shipper Id</th>
+            <td>
+                @Html.DisplayFor(model => model.shipperid)
+            </td>
+        </tr>
+        <tr>
+            <th>Company</th>
+            <td>
+                @Html.DisplayFor(model => model.companyname)
+            </td>
+        </tr>
+        <tr>
+            <th>Shipper</th>
+            <td>
+                @Html.DisplayFor(model => model.shipname)
+            </td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>
+                @Html.DisplayFor(model => model.phone)
+            </td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>
+                @Html.DisplayFor(model => model.shipaddress)
+            </td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>
+                @Html.DisplayFor(model => model.shipcity)
+            </td>
+        </tr>
+        <tr>
+            <th>Region</th>
+            <td>
+                @Html.DisplayFor(model => model.shipregion)
+            </td>
+        </tr>
+        <tr>
+            <th>Postal Code</th>
+            <td>
+                @Html.DisplayFor(model => model.shippostalcode)
+            </td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>
+                @Html.DisplayFor(model => model.shipcountry)
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Edit","Edit", new { id = Model.shipperid }) | <a asp-action="Index">Vuelta a la lista</a>
+</div>
