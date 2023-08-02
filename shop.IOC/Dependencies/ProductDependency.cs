@@ -8,7 +8,7 @@ namespace shop.IOC.Dependencies
 {
     public static class ProductDependency
     {
-        public static void AddProductDependecy(this IServiceCollection services)
+        public static void AddProductDependency(this IServiceCollection services)
         {
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddTransient<IProductService, ProductService>();

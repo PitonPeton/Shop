@@ -7,13 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<shopContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("shopContext")));
 
 builder.Services.AddProductDependency();
-
-
 
 var app = builder.Build();
 
