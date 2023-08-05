@@ -4,4 +4,9 @@
     {
         public OrderModel? data { get; set; }
     }
+
+    public class OrderAddResponse : BaseResponse
+    {
+
+    }
 }

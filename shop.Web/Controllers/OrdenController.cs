@@ -1,76 +1,114 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using shop.Application.Dtos.Order;
-using shop.Infraestructure.Models;
-using shop.Application.Contract;
 using shop.Web.Models.Responses;
-using System.Text;
+using shop.Web.Services;
 
 namespace shop.Web.Controllers
 {
     public class OrdenController : Controller
     {
-        HttpClientHandler httpClientHandler = new HttpClientHandler();
+        private readonly IOrderApiService orderApiService;
 
-        public OrdenController(IConfiguration configuration)
+        //private readonly IHttpClientFactory httpClientFactory;
+        //private readonly IConfiguration configuration;
+        //private readonly ILogger<CursoController> logger;
+        //private string baseUrl = string.Empty;
+        public OrdenController(IOrderApiService orderApiService)
         {
-            this.httpClientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyError) => { return true; };
+            //this.httpClientFactory = httpClientFactory;
+            //this.configuration = configuration;
+            //this.logger = logger;
+            //this.baseUrl = this.configuration["ApiConfig:baseUrl"];
+            this.orderApiService = orderApiService;
         }
-
+        // GET: CursoController
         public ActionResult Index()
         {
-            OrderListResponse orderList = new OrderListResponse();
+            OrderListResponse orderReponse = new OrderListResponse();
 
-            using (var httpClient = new HttpClient(this.httpClientHandler))
-            {
-                using (var response = httpClient.GetAsync("http://localhost:5016/api/Order").Result)
-                {
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        string apiResponse = response.Content.ReadAsStringAsync().Result;
-                        orderList = JsonConvert.DeserializeObject<OrderListResponse>(apiResponse);
-                    }
-                }
-            }
 
-            return View(orderList.data);
+            orderReponse = this.orderApiService.GetOrders();
 
+            //try
+            //{
+            //    using (var httpClient = this.httpClientFactory.CreateClient())
+            //    {
+            //        using (var response = httpClient.GetAsync($"{this.baseUrl}/Course/GetCourses").Result)
+            //        {
+            //            if (response.IsSuccessStatusCode)
+            //            {
+            //                string apiResponse = response.Content.ReadAsStringAsync().Result;
+            //                courseReponse = JsonConvert.DeserializeObject<CourseListReponse>(apiResponse);
+            //            }
+            //            else
+            //            {
+            //                // realizar x logica //
+            //                ViewBag.Message = courseReponse.message;
+            //                return View();
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.logger.LogError("Error obteniendo los cursos", ex.ToString());
+            //    return View();
+            //}
+
+
+            return View(orderReponse.data);
         }
 
+        // GET: CursoController/Details/5
         public ActionResult Details(int id)
         {
+            OrderDetailResponse orderDetailResponse = this.orderApiService.GetOrder(id);
 
-            OrderDetailResponse orderDetail = new OrderDetailResponse();
 
-            using (var httpClient = new HttpClient(this.httpClientHandler))
-            {
-                using (var response = httpClient.GetAsync($"http://localhost:5016/api/Order/{id}").Result)
-                {
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        string apiResponse = response.Content.ReadAsStringAsync().Result;
-                        orderDetail = JsonConvert.DeserializeObject<OrderDetailResponse>(apiResponse);
-                    }
-                }
-            }
+            //try
+            //{
+            //    using (var httpClient = this.httpClientFactory.CreateClient())
+            //    {
+            //        using (var response = httpClient.GetAsync($"{this.baseUrl}/Course/GetCourse?id={ id }").Result)
+            //        {
+            //            if (response.IsSuccessStatusCode)
+            //            {
+            //                string apiResponse = response.Content.ReadAsStringAsync().Result;
+            //                courseDetailResponse = JsonConvert.DeserializeObject<CourseDetailResponse>(apiResponse);
+            //            }
+            //            else
+            //            {
+            //                // realizar x logica //
+            //                ViewBag.Message = courseDetailResponse.message;
+            //                return View();
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
 
-            return View(orderDetail.data);
+            //    this.logger.LogError("Error obteniendo los cursos", ex.ToString());
+            //    return View();
+            //}
 
+            return View(orderDetailResponse.data);
         }
 
+        // GET: CursoController/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        // POST: CursoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OrderAddDto OrderAddDto)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
-
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -79,79 +117,45 @@ namespace shop.Web.Controllers
             }
         }
 
+        // GET: CursoController/Edit/5
         public ActionResult Edit(int id)
         {
-            OrderDetailResponse orderDetail = new OrderDetailResponse();
+            OrderDetailResponse orderDetailResponse = new OrderDetailResponse();
 
-            using (var httpClient = new HttpClient(this.httpClientHandler))
-            {
-                using (var response = httpClient.GetAsync($"http://localhost:5016/api/Order/{id}").Result)
-                {
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        string apiResponse = response.Content.ReadAsStringAsync().Result;
-                        orderDetail = JsonConvert.DeserializeObject<OrderDetailResponse>(apiResponse);
-                    }
-                }
-            }
+            //try
+            //{
+            //    using (var httpClient = this.httpClientFactory.CreateClient())
+            //    {
+            //        using (var response = httpClient.GetAsync($"{this.baseUrl}/Course/GetCourse?id={id}").Result)
+            //        {
+            //            if (response.IsSuccessStatusCode)
+            //            {
+            //                string apiResponse = response.Content.ReadAsStringAsync().Result;
+            //                courseDetailResponse = JsonConvert.DeserializeObject<CourseDetailResponse>(apiResponse);
+            //            }
+            //            else
+            //            {
+            //                // realizar x logica //
+            //                ViewBag.Message = courseDetailResponse.message;
+            //                return View();
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
 
-            return View(orderDetail.data);
+            //    this.logger.LogError("Error obteniendo los cursos", ex.ToString());
+            //    return View();
+            //}
 
+            return View(orderDetailResponse.data);
         }
 
+        // POST: CursoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(OrderUpdateDto OrderUpdateDto)
-        {
-            try
-            {
-                var orderUpdateResponse = new OrderUpdateResponse();
-
-                using (var httpClient = new HttpClient(this.httpClientHandler))
-                {
-                    StringContent content = new StringContent(JsonConvert.SerializeObject(OrderUpdateDto), Encoding.UTF8, "application/json");
-
-                    using (var response = httpClient.PostAsync("http://localhost:5016/api/Order/Modificar", content).Result)
-                    {
-                        if (response.IsSuccessStatusCode)
-                        {
-                            string apiResponse = response.Content.ReadAsStringAsync().Result;
-                            var result = JsonConvert.DeserializeObject<OrderUpdateResponse>(apiResponse);
-
-                            if (!result.success)
-                            {
-                                ViewBag.Message = result.message;
-                                return View();
-                            }
-
-                            return RedirectToAction(nameof(Index));
-
-                        }
-                        else
-                        {
-                            ViewBag.Message = "Error actualizando el Orden";
-                            return View();
-                        }
-                    }
-                }
-            }
-            catch
-            {
-                return View();
-            }
-
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection formCollection)
+        public ActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -162,5 +166,6 @@ namespace shop.Web.Controllers
                 return View();
             }
         }
+
     }
 }
