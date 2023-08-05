@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BaseIntermediateOutputPath>C:\Proyecto\Shop\shop.WebApp\obj</BaseIntermediateOutputPath>
+    <BaseOutputPath>C:\Proyecto\Shop\shop.WebApp\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\shop.Application\shop.Application.csproj" />
+    <ProjectReference Include="..\shop.IOC\shop.IOC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shipper\" />
+    <Folder Include="Views\Order\" />
+  </ItemGroup>
+
+</Project>

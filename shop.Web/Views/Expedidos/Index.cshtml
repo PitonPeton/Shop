@@ -1,0 +1,121 @@
+﻿@model IEnumerable<shop.Web.Models.ShipperModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+
+    .table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+        .table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+        }
+
+        .table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .table tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+
+</style>
+
+<h1>Shippers</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo expedido</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Shipper Id
+            </th>
+            <th>
+                Company
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Shipper
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Region
+            </th>
+            <th>
+                Postal Code
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipperid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.companyname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipaddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipcity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipregion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shippostalcode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipcountry)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id= item.shipperid }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.shipperid })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

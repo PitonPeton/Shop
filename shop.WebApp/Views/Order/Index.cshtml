@@ -1,0 +1,97 @@
+﻿@model IEnumerable<shop.WebApp.Models.OrderModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<style>
+
+    .table{
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .table thead tr{
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .table th, .table td{
+        padding: 12px 15px;
+    }
+
+    .table tbody tr{
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+</style>
+
+<h1>Orders</h1>
+
+<p>
+	<a asp-action="Create">Crear nueva orden</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Order
+            </th>
+            <th>
+                Freight
+            </th>
+            <th>
+                Customer Id
+            </th>
+            <th>
+                Shipper Id
+            </th>
+            <th>
+                Employee Id
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.orderid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.freight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.custid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shipperid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.empid)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id= item.orderid }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.orderid })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,4 +1,4 @@
-﻿@model shop.Web.Models.OrderModel
+﻿@model shop.Infraestructure.Models.OrderModel
 
 @{
 	ViewData["Title"] = "Create";
@@ -15,7 +15,7 @@
 
 </style>
 
-<h1>Create Order</h1>
+<h1>Create Order without API</h1>
 
 <br />
 
@@ -50,3 +50,13 @@
 		</form>
 	</div>
 </div>
+
+<div>
+    <a asp-action="Index">Vuelta a la lista</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

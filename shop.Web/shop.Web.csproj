@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Expedidos\" />
+    <Folder Include="Views\Orden\" />
     <Folder Include="Views\Shipper\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>

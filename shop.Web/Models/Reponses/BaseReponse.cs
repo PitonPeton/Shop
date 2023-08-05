@@ -1,9 +1,8 @@
-﻿namespace shop.Web.Models.Reponses
+﻿namespace shop.Web.Models.Responses
 {
-    public class BaseReponse<TModel> where TModel : class
+    public class BaseResponse
     {
         public bool success { get; set; }
-        public object? message { get; set; }
-        public List<TModel> data { get; set; }
+        public string? message { get; set; }
     }
 }

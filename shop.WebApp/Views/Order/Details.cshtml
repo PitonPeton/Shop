@@ -1,0 +1,123 @@
+﻿@model shop.WebApp.Models.OrderModel
+@{
+	ViewData["Title"] = "Details";
+}
+
+<style>
+
+    .table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .table th {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .table th, .table td {
+        padding: 12px 15px;
+    }
+    
+    .table th{
+        min-width: 100px;
+    }
+
+    .table td{
+        min-width: 250px;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+</style>
+
+<h1>Order Details</h1>
+<!--
+<div>
+	<br />
+	<dl class="row">
+
+		<dt class="col-sm-2">
+            Order Id
+		</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.orderid)
+        </dd>
+        <dt class="col-sm-2">
+            Freight
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.freight)
+        </dd>
+        <dt class="col-sm-2">
+            Customer Id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.custid)
+        </dd>
+        <dt class="col-sm-2">
+            Shipper Id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.shipperid)
+        </dd>
+        <dt class="col-sm-2">
+            Employee Id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.empid)
+        </dd>
+	</dl>
+</div>
+-->
+<div>
+    <table class="table">
+        <tr>
+            <th>Order Id</th>
+            <td>
+                @Html.DisplayFor(model => model.orderid)
+            </td>
+        </tr>
+        <tr>
+            <th>Freight</th>
+            <td>
+                @Html.DisplayFor(model => model.freight)
+            </td>
+        </tr>
+        <tr>
+            <th>Customer Id</th>
+            <td>
+                @Html.DisplayFor(model => model.custid)
+            </td>
+        </tr>
+        <tr>
+            <th>Shipper Id</th>
+            <td>
+                @Html.DisplayFor(model => model.shipperid)
+            </td>
+        </tr>
+        <tr>
+            <th>Employee Id</th>
+            <td>
+                @Html.DisplayFor(model => model.empid)
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Edit","Edit", new { id = Model.orderid }) | <a asp-action="Index">Vuelta a la lista</a>
+</div>

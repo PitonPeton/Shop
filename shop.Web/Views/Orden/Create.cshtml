@@ -1,0 +1,62 @@
+﻿@model shop.Web.Models.OrderModel
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+
+<style>
+    #botones{
+        margin-top: 25px;
+    }
+    input{
+        height: 30px;
+    }
+
+</style>
+
+<h1>Create Order with API</h1>
+
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="custid" class="control-label">Customer Id</label>
+                <input asp-for="custid" class="form-control" />
+                <span asp-validation-for="custid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="empid" class="control-label">Employee Id</label>
+                <input asp-for="empid" class="form-control" />
+                <span asp-validation-for="empid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipperid" class="control-label">Shipper Id</label>
+                <input asp-for="shipperid" class="form-control" />
+                <span asp-validation-for="shipperid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="freight" class="control-label">Freight</label>
+                <input asp-for="freight" class="form-control" />
+                <span asp-validation-for="freight" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="botones">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="reset" value="Clear" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Vuelta a la lista</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
