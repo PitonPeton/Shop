@@ -1,7 +1,6 @@
 ﻿namespace shop.Web.Models.Responses
 {
-    public class ProductUpdateResponse : BaseResponse
+    public class ProductResponse : BaseResponse
     {
-
     }
 }

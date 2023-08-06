@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using shop.Infraestructure.Context;
 using shop.IOC.Dependencies;
+using shop.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<shopContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("shopContext")));
 
 builder.Services.AddProductDependency();
+
+builder.Services.AddHttpClient();
+
+builder.Services.AddTransient<IProductApiService, ProductApiService>();
 
 var app = builder.Build();
 

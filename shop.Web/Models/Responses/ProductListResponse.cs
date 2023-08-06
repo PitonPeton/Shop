@@ -1,6 +1,6 @@
 ﻿namespace shop.Web.Models.Responses
 {
-    public class ProductListResponse : BaseResponse
+    public class ProductListResponse : ProductResponse
     {
         public List<ProductModel> data { get; set; }
     }
