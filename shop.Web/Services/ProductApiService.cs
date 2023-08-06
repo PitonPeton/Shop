@@ -111,7 +111,33 @@ namespace shop.Web.Services
 
         public ProductUpdateRequest Update(ProductUpdateDto productUpdateDto)
         {
-            throw new NotImplementedException();
+            ProductUpdateRequest productUpdate= new ProductUpdateRequest();
+
+            try
+            {
+                productUpdateDto.change_user = 1;
+
+                using (var httpClient = this.httpClientFactory.CreateClient())
+                {
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(productUpdateDto), Encoding.UTF8, "application/json");
+
+                    using (var response = httpClient.PostAsync($"{this.baseUrl}/Product/Modificar", content).Result)
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string apiResponse = response.Content.ReadAsStringAsync().Result;
+                            productUpdate = JsonConvert.DeserializeObject<ProductUpdateRequest>(apiResponse);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                productUpdate.success = false;
+                productUpdate.message = "Error obteniendo los productos";
+                this.logger.LogError($"{productUpdate.message}", ex.ToString());
+            }
+            return productUpdate;
         }
     } 
 }

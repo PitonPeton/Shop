@@ -129,10 +129,22 @@ namespace shop.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, ProductUpdateRequest productUpdate)
         {
             try
             {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductUpdateRequest, ProductUpdateDto>());
+                var mapper = config.CreateMapper();
+
+                var productUpdateDto = mapper.Map<ProductUpdateDto>(productUpdate);
+
+                var result = productApiService.Update(productUpdateDto);
+                if (result != null)
+                {
+                    ViewBag.message = result.message;
+                    return View();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch

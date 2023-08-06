@@ -10,7 +10,6 @@ namespace shop.Web.Models.Extention
         {
             return new ProductAddDto()
             {
-
                 productname = productSave.productname,
                 unitprice = productSave.unitprice,
                 categoryid = productSave.categoryid,
