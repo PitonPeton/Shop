@@ -1,4 +1,4 @@
-﻿namespace shop.Web.Models.Reponses
+﻿ namespace shop.Web.Models.Reponses
 {
     public class CustomerResponse  : BaseReponse
     {

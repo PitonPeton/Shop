@@ -108,7 +108,6 @@ namespace shop.Web.Controllers
             return View(customerDetail.data);
         }
 
-        // POST: DepartamentoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CustomerUpdateDto customerUpdateDto)

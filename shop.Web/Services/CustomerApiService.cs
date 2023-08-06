@@ -90,7 +90,7 @@ namespace shop.Web.Services
 
         public CustomerSaveReponse Save(CustomerAddDto customerAddDto)
         {
-            CustomerSaveReponse customerSaveReponse = new CustomerSaveReponse();
+            CustomerSaveReponse customerSave = new CustomerSaveReponse();
 
             try
             {
@@ -100,26 +100,23 @@ namespace shop.Web.Services
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(customerAddDto), Encoding.UTF8, "application/json");
 
-
-                    using (var response = httpClient.PostAsync($"{this.baseUrl}/Customer/Save", content).Result)
+                    using (var response = httpClient.PostAsync($"{this.baseUrl}/Customer/Guardar", content).Result)
                     {
                         if (response.IsSuccessStatusCode)
                         {
                             string apiResponse = response.Content.ReadAsStringAsync().Result;
-
-                            customerSaveReponse = JsonConvert.DeserializeObject<CustomerSaveReponse>(apiResponse);
+                            customerSave = JsonConvert.DeserializeObject<CustomerSaveReponse>(apiResponse);
                         }
-                        
                     }
                 }
             }
             catch (Exception ex)
             {
-                customerSaveReponse.success = false;
-                customerSaveReponse.message = "Error guardando el cliente";
-                this.logger.LogError($"{customerSaveReponse.message}", ex.ToString());
+                customerSave.success = false;
+                customerSave.message = "Error guardando el cliente";
+                this.logger.LogError($"{customerSave.message}", ex.ToString());
             }
-            return customerSaveReponse;
+            return customerSave;
         }
 
         public CustomerUpdateResponse Update(CustomerUpdateDto customerUpdateDto)
@@ -135,7 +132,7 @@ namespace shop.Web.Services
                 {
                     StringContent content = new StringContent(JsonConvert.SerializeObject(customerUpdateDto), Encoding.UTF8, "application/json");
 
-                    using (var response = httpClient.PostAsync($"{this.baseUrl}/Customer/Update", content).Result)
+                    using (var response = httpClient.PostAsync($"{this.baseUrl}/Customer/Modificar", content).Result)
                     {
                         if (response.IsSuccessStatusCode)
                         {
@@ -148,69 +145,10 @@ namespace shop.Web.Services
             catch (Exception ex)
             {
                 customerUpdate.success = false;
-                customerUpdate.message = "Error obteniendo los productos";
+                customerUpdate.message = "Error modificando el cliente";
                 this.logger.LogError($"{customerUpdate.message}", ex.ToString());
             }
             return customerUpdate;
-        }
-    }
-    public class CustomerApiHttpClientService : ICustomerApiService
-    {
-        private readonly IHttpClientFactory httpClientFactory;
-        private readonly IConfiguration configuration;
-        private readonly ILogger<CustomerApiHttpClientService> logger;
-        private string baseUrl = string.Empty;
-        public CustomerApiHttpClientService(IHttpClientFactory httpClientFactory,
-                               IConfiguration configuration,
-                               ILogger<CustomerApiHttpClientService> logger)
-        {
-            this.httpClientFactory = httpClientFactory;
-            this.configuration = configuration;
-            this.logger = logger;
-            this.baseUrl = configuration["ApiConfig:baseUrl"];
-        }
-        public CustomerDetailResponse GetCustomer(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CustomerListResponse GetCustomers()
-        {
-            CustomerListResponse customerReponse = new CustomerListResponse();
-
-            try
-            {
-                using (var httpClient = this.httpClientFactory.CreateClient())
-                {
-                    using (var response = httpClient.GetAsync($"{this.baseUrl}/Customer/GetCustomers").Result)
-                    {
-                        if (response.IsSuccessStatusCode)
-                        {
-                            string apiResponse = response.Content.ReadAsStringAsync().Result;
-                            customerReponse = JsonConvert.DeserializeObject<CustomerListResponse>(apiResponse);
-                        }
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                customerReponse.success = false;
-                customerReponse.message = "Error obteniendo los clientes";
-                this.logger.LogError($"{customerReponse.message}", ex.ToString());
-
-            }
-            return customerReponse;
-        }
-
-        public CustomerSaveReponse Save(CustomerAddDto customerAddDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CustomerUpdateResponse Update(CustomerUpdateDto customerUpdateDto)
-        {
-            throw new NotImplementedException();
         }
     }
 

@@ -16,8 +16,6 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddTransient<ICustomerApiService, CustomerApiService>();
 
-builder.Services.AddTransient<ICustomerApiService, CustomerApiHttpClientService>();
-
 
 var app = builder.Build();
 
