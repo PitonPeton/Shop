@@ -1,0 +1,63 @@
+﻿@model IEnumerable<shop.Infraestructure.Models.CustomerModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a asp-action="Create">Crear cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Compañia
+            </th>
+            <th>
+
+                Nombre de contacto
+            </th>
+            <th>
+                Cargo
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.companyname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contactname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contacttitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id= item.custid }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.custid })
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
