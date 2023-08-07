@@ -1,12 +1,10 @@
-﻿namespace shop.Web.Models.Responses
+﻿using shop.Web.Models.Core;
+
+namespace shop.Web.Models.Responses
 {
-    public class OrderDetailResponse : BaseResponse
+    public class OrderDetailResponse : BaseResponseD
     {
-        public OrderModel? data { get; set; }
+        public OrderResponseModel? data { get; set; }
     }
 
-    public class OrderAddResponse : BaseResponse
-    {
-
-    }
 }

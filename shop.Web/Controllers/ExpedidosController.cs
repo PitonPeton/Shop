@@ -5,28 +5,28 @@ using shop.Web.Services;
 
 namespace shop.Web.Controllers
 {
-    public class OrdenController : Controller
+    public class ExpedidosController : Controller
     {
-        private readonly IOrderApiService orderApiService;
-        public OrdenController(IOrderApiService orderApiService)
+        private readonly IShipperApiService shipperApiService;
+        public ExpedidosController(IShipperApiService shipperApiService)
         {
-            this.orderApiService = orderApiService;
+            this.shipperApiService = shipperApiService;
         }
 
-        // GET: OrdenController
+        // GET: ExpedidoController
         public ActionResult Index()
         {
             try
             {
-                OrderListResponse orderList = new OrderListResponse();
+                ShipperListResponse shipperList = new ShipperListResponse();
 
-                orderList = orderApiService.Get();
+                shipperList = shipperApiService.Get();
 
-                if (!orderList.success)
-                    throw new Exception(orderList.message);
+                if (!shipperList.success)
+                    throw new Exception(shipperList.message);
 
 
-                return View(orderList.data);
+                return View(shipperList.data);
             }
             catch (Exception e)
             {
@@ -35,16 +35,16 @@ namespace shop.Web.Controllers
             }
         }
 
-        // GET: OrdenController/Details/5
+        // GET: ExpedidoController/Details/5
         public ActionResult Details(int id)
         {
-            OrderDetailResponse orderdetail = new OrderDetailResponse();
-            orderdetail = this.orderApiService.GetById(id);
+            ShipperDetailResponse shipperdetail = new ShipperDetailResponse();
+            shipperdetail = this.shipperApiService.GetById(id);
 
-            return View(orderdetail.data);
+            return View(shipperdetail.data);
         }
 
-        // GET: OrdenController/Create
+        // GET: ExpedidoController/Create
         public ActionResult Create()
         {
             return View();
@@ -53,11 +53,11 @@ namespace shop.Web.Controllers
         // POST: OrdenController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OrderAddRequest orderAdd)
+        public ActionResult Create(ShipperAddRequest shipperAdd)
         {
             try
             {
-                var result = orderApiService.Add(orderAdd);
+                var result = shipperApiService.Add(shipperAdd);
 
                 if (!result.success)
                 {
@@ -78,20 +78,20 @@ namespace shop.Web.Controllers
         // GET: OrdenController/Edit/5
         public ActionResult Edit(int id)
         {
-            OrderDetailResponse orderdetail = new OrderDetailResponse();
-            orderdetail = this.orderApiService.GetById(id);
+            ShipperDetailResponse shipperdetail = new ShipperDetailResponse();
+            shipperdetail = this.shipperApiService.GetById(id);
 
-            return View(orderdetail.data);
+            return View(shipperdetail.data);
         }
 
         // POST: OrdenController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, OrderUpdateRequest orderUpdate)
+        public ActionResult Edit(int id, ShipperUpdateRequest shipperUpdate)
         {
             try
             {
-                var result = orderApiService.Update(orderUpdate);
+                var result = shipperApiService.Update(shipperUpdate);
 
                 if (!result.success)
                 {

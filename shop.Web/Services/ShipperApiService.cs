@@ -1,5 +1,5 @@
 ﻿using shop.Web.Controllers.Extentions;
-using shop.Application.Dtos.Order;
+using shop.Application.Dtos.Shipper;
 using shop.Web.Models.Core;
 using shop.Web.Services.Caller;
 using shop.Web.Models.Request;
@@ -7,74 +7,74 @@ using shop.Web.Models.Responses;
 
 namespace shop.Web.Services
 {
-    public class OrderApiService : IOrderApiService
+    public class ShipperApiService : IShipperApiService
     {
         private readonly IApiServiceCaller apicaller;
-        private readonly ILogger<OrderApiService> logger;
-        private string baseUrl = "http://localhost:5016/api/Order/";
+        private readonly ILogger<ShipperApiService> logger;
+        private string baseUrl = "http://localhost:5016/api/Shipper/";
 
 
-        public OrderApiService(IApiServiceCaller apicaller, ILogger<OrderApiService> logger)
+        public ShipperApiService(IApiServiceCaller apicaller, ILogger<ShipperApiService> logger)
         {
             this.apicaller = apicaller;
             this.logger = logger;
         }
 
-        public OrderListResponse Get()
+        public ShipperListResponse Get()
         {
-            OrderListResponse? ordersList = new OrderListResponse();
-            string url = $" {baseUrl}GetOrders";
+            ShipperListResponse? shippersList = new ShipperListResponse();
+            string url = $" {baseUrl}GetShippers";
 
             try
             {
-                ordersList = apicaller.Get(url, ordersList);
+                shippersList = apicaller.Get(url, shippersList);
 
-                if (ordersList == null)
+                if (shippersList == null)
                     throw new Exception();
             }
             catch (Exception ex)
             {
-                ordersList = new OrderListResponse();
-                ordersList.success = false;
-                ordersList.message = $"Error al solicitar al llamar Api, url:{url}";
-                logger.LogError(ordersList.message, ex.ToString());
+                shippersList = new ShipperListResponse();
+                shippersList.success = false;
+                shippersList.message = $"Error al solicitar al llamar Api, url:{url}";
+                logger.LogError(shippersList.message, ex.ToString());
             }
 
-            return ordersList;
+            return shippersList;
         }
-        public OrderDetailResponse GetById(int id)
+        public ShipperDetailResponse GetById(int id)
         {
-            OrderDetailResponse? order = new OrderDetailResponse();
+            ShipperDetailResponse? shipper = new ShipperDetailResponse();
             string url = $" {baseUrl}/{id}";
 
             try
             {
-                order = apicaller.Get(url, order);
+                shipper = apicaller.Get(url, shipper);
 
-                if (order == null)
+                if (shipper == null)
                     throw new Exception();
             }
             catch (Exception ex)
             {
-                order = new OrderDetailResponse();
-                order.success = false;
-                order.message = $"Error al solicitar al llamar Api, url:{url}";
-                logger.LogError(order.message, ex.ToString());
+                shipper = new ShipperDetailResponse();
+                shipper.success = false;
+                shipper.message = $"Error al solicitar al llamar Api, url:{url}";
+                logger.LogError(shipper.message, ex.ToString());
             }
 
-            return order;
+            return shipper;
         }
-        public BaseResponseD Add(OrderAddRequest add)
+        public BaseResponseD Add(ShipperAddRequest add)
         {
             BaseResponseD? result = new BaseResponseD();
 
-            OrderAddDto orderAdd = add.ConvertAddRequestToAddDto();
+            ShipperAddDto shipperAdd = add.ConvertAddRequestToAddDto();
 
             string url = $" {baseUrl}Guardar";
 
             try
             {
-                result = apicaller.Set(url, orderAdd, result);
+                result = apicaller.Set(url, shipperAdd, result);
                 if (result == null)
                     throw new Exception();
             }
@@ -88,16 +88,16 @@ namespace shop.Web.Services
 
             return result;
         }
-        public BaseResponseD Update(OrderUpdateRequest update)
+        public BaseResponseD Update(ShipperUpdateRequest update)
         {
             BaseResponseD? result = new BaseResponseD();
 
-            OrderUpdateDto orderUpdate = update.ConvertirUpdateRequestToUpdateDto();
+            ShipperUpdateDto shipperUpdateUpdate = update.ConvertirUpdateRequestToUpdateDto();
             string url = $" {baseUrl}Modificar";
 
             try
             {
-                result = apicaller.Set(url, orderUpdate, result);
+                result = apicaller.Set(url, shipperUpdateUpdate, result);
                 if (result == null)
                     throw new Exception();
             }

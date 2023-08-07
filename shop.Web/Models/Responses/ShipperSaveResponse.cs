@@ -1,7 +1,6 @@
-﻿using shop.Web.Models.Reponses;
-using shop.Web.Models.Responses;
+﻿using shop.Web.Models.Core;
 
-namespace shop.Web.Models.Reponses
+namespace shop.Web.Models.Responses
 {
     public class ShipperSaveResponse : BaseResponse
     {

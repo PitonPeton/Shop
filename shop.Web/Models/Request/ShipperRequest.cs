@@ -1,6 +1,8 @@
-﻿namespace shop.Web.Models
+﻿using shop.Web.Models.Core;
+
+namespace shop.Web.Models.Request
 {
-    public class ShipperModel
+    public class ShipperRequest : BaseRequest
     {
         public int shipperid { get; set; }
         public string companyname { get; set; }

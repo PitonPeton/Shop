@@ -11,12 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\shop.Api\shop.Api.csproj" />
     <ProjectReference Include="..\shop.Application\shop.Application.csproj" />
     <ProjectReference Include="..\shop.IOC\shop.IOC.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Views\Expedidos\" />
+    <Folder Include="Views\Shippero\" />
+    <Folder Include="Views\ShipperHttp\" />
+    <Folder Include="Views\OrderHttp\" />
     <Folder Include="Views\Orden\" />
     <Folder Include="Views\Shipper\" />
     <Folder Include="Views\Order\" />

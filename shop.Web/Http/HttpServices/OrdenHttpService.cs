@@ -1,23 +1,26 @@
-﻿using shop.Web.Controllers.Extentions;
-using shop.Application.Dtos.Order;
+﻿using shop.Web.Models.Responses;
 using shop.Web.Models.Core;
-using shop.Web.Services.Caller;
+using shop.Application.Dtos.Order;
+using shop.Web.Controllers.Extentions;
 using shop.Web.Models.Request;
-using shop.Web.Models.Responses;
 
-namespace shop.Web.Services
+
+namespace shop.Web.Http.HttpServices
 {
-    public class OrderApiService : IOrderApiService
+    public class OrdenHttpService
     {
-        private readonly IApiServiceCaller apicaller;
-        private readonly ILogger<OrderApiService> logger;
-        private string baseUrl = "http://localhost:5016/api/Order/";
 
+        private readonly IHttpCaller httpCaller;
+        private readonly ILogger<OrdenHttpService> logger;
+        private string baseUrl = string.Empty;
 
-        public OrderApiService(IApiServiceCaller apicaller, ILogger<OrderApiService> logger)
+        public OrdenHttpService(IHttpCaller apiCaller,
+                                IConfiguration configuration,
+                                ILogger<OrdenHttpService> logger)
         {
-            this.apicaller = apicaller;
+            this.httpCaller = apiCaller;
             this.logger = logger;
+            this.baseUrl = configuration["ApiConfig:baseUrl"] + "Order/";
         }
 
         public OrderListResponse Get()
@@ -27,7 +30,7 @@ namespace shop.Web.Services
 
             try
             {
-                ordersList = apicaller.Get(url, ordersList);
+                ordersList = httpCaller.Get(url, ordersList);
 
                 if (ordersList == null)
                     throw new Exception();
@@ -42,14 +45,15 @@ namespace shop.Web.Services
 
             return ordersList;
         }
-        public OrderDetailResponse GetById(int id)
+
+        public OrderDetailResponse GetById(int Id)
         {
             OrderDetailResponse? order = new OrderDetailResponse();
-            string url = $" {baseUrl}/{id}";
+            string url = $" {baseUrl}GetOrders?id={Id}";
 
             try
             {
-                order = apicaller.Get(url, order);
+                order = httpCaller.Get(url, order);
 
                 if (order == null)
                     throw new Exception();
@@ -64,6 +68,7 @@ namespace shop.Web.Services
 
             return order;
         }
+
         public BaseResponseD Add(OrderAddRequest add)
         {
             BaseResponseD? result = new BaseResponseD();
@@ -74,7 +79,7 @@ namespace shop.Web.Services
 
             try
             {
-                result = apicaller.Set(url, orderAdd, result);
+                result = httpCaller.Set(url, orderAdd, result);
                 if (result == null)
                     throw new Exception();
             }
@@ -88,6 +93,7 @@ namespace shop.Web.Services
 
             return result;
         }
+
         public BaseResponseD Update(OrderUpdateRequest update)
         {
             BaseResponseD? result = new BaseResponseD();
@@ -97,7 +103,7 @@ namespace shop.Web.Services
 
             try
             {
-                result = apicaller.Set(url, orderUpdate, result);
+                result = httpCaller.Set(url, orderUpdate, result);
                 if (result == null)
                     throw new Exception();
             }
@@ -111,6 +117,5 @@ namespace shop.Web.Services
 
             return result;
         }
-
     }
 }

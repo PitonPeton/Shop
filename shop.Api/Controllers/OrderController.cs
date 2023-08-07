@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using shop.Infraestructure.Interfaces;
 using shop.Application.Dtos.Order;
-using shop.Domain.Entities.Orders;
-using shop.Application.Service;
 using shop.Application.Contract;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,7 +17,7 @@ namespace shop.Api.Controllers
             this.orderService = orderService;
         }
 
-        [HttpGet]
+        [HttpGet("GetOrders")]
         public IActionResult Get()
         {
             var orders = this.orderService.Get();

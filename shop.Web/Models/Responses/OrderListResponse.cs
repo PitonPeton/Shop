@@ -1,7 +1,9 @@
-﻿namespace shop.Web.Models.Responses
+﻿using shop.Web.Models.Core;
+
+namespace shop.Web.Models.Responses
 {
-    public class OrderListResponse : BaseResponse
+    public class OrderListResponse : BaseResponseD
     {
-        public List<OrderModel> data { get; set; }
+        public List<OrderResponseModel>? data { get; set; }
     }
 }

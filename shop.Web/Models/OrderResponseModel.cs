@@ -1,6 +1,6 @@
 ﻿namespace shop.Web.Models
 {
-        public class OrderModel
+        public class OrderResponseModel
         {
             public int orderid { get; set; }
             public int? custid { get; set; }

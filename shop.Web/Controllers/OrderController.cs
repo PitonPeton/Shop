@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using shop.Application.Dtos.Order;
 using shop.Infraestructure.Models;
 using shop.Application.Contract;

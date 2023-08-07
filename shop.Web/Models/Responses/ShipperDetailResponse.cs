@@ -1,7 +1,10 @@
-﻿namespace shop.Web.Models.Responses
+﻿using shop.Web.Models.Core;
+
+namespace shop.Web.Models.Responses
 {
-    public class ShipperDetailResponse : BaseResponse
+
+    public class ShipperDetailResponse : BaseResponseD
     {
-        public ShipperModel? data { get; set; }
+        public ShipperResponseModel? data { get; set; }
     }
 }
